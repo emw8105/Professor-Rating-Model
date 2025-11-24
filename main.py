@@ -32,9 +32,33 @@ def load_professor_dataset():
     df.index.name = "instructor_id"
     df.reset_index(inplace=True)
 
-    # TF-IDF will need space-separated strings so we aggregate tags list into single string, and smooth out any formatting inconsistencies
-    df["tags_text"] = df["tags"].apply(lambda x: " ".join(x) if isinstance(x, list) else "")
+    # smooth out any formatting inconsistencies
     df["instructor_id"] = df["instructor_id"].astype(str).str.strip()
+
+    expected_defaults = {
+        "quality_rating": np.nan,
+        "difficulty_rating": np.nan,
+        "would_take_again": np.nan,
+        "ratings_count": 0,
+        "tags": [],
+        "url": None,
+    }
+
+    for col, default in expected_defaults.items():
+        if col not in df.columns:
+            df[col] = default
+
+        # special handling for tags (list field)
+        if col == "tags":
+            df[col] = df[col].apply(lambda x: x if isinstance(x, list) else default)
+        else:
+            # everything other var type
+            df[col] = df[col].apply(lambda x: x if pd.notna(x) else default)
+
+
+    # TF-IDF will need space-separated strings so we aggregate tags list into single string and flag if the data didn't have a matched RMP profile
+    df["tags_text"] = df["tags"].apply(lambda x: " ".join(x) if isinstance(x, list) else "")
+    df["has_rmp"] = df["quality_rating"].notnull()
 
     return df
 
