@@ -77,9 +77,20 @@ def load_all_grade_data():
     if not all_grades:
         raise ValueError("No enhanced_grades_*.csv files found in /data directory.")
 
-    # aggregate all grades into one df and fixing silent failed merges due to any formatting inconsistencies
+    # aggregate all grades into one df
     grades_df = pd.concat(all_grades, ignore_index=True)
-    grades_df["instructor_id"] = grades_df["instructor_id"].astype(str).str.strip()
+    
+    # normalize instructor id format so that missing ids are empty strings and no leading/trailing whitespace for easy removal
+    grades_df["instructor_id"] = (grades_df["instructor_id"].fillna("").astype(str).str.strip().replace({"nan": "", "None": "", "": ""}))
+
+    # remove records with empty instructor_id, sometimes occurs because student professors or TAs without ids are listed on courses
+    before = len(grades_df)
+    grades_df = grades_df[grades_df["instructor_id"] != ""] # only keep records with instructor ids
+    after = len(grades_df)
+    print(f"Grade data before removing empty instructor ids: {before}, after: {after}")
+
+    if before != after:
+        print(f"Removed {before - after} records with empty instructor ids")
 
     return grades_df
 
