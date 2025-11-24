@@ -1,0 +1,538 @@
+Subject,Catalog Nbr,Section,A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F,CR,I,NC,W,P,Instructor 1,Instructor 2,Instructor 3,Instructor 4,Instructor 5,Instructor 6,instructor_id,instructor_name_normalized
+ACCT,2302,5U1,2,5,,1,4,2,5,1,1,,,1,3,,,,,,"Zolton, Kathy","Zhang, Yang",,,,,cah041000,christopher hess
+ACCT,3312,5U1,6,8,7,4,2,4,4,,,1,1,,,,,,,,"Johnson, Jennifer G","Zhou, Junfei",,,,,jxj091000,jennifer johnson
+ACCT,3331,5U1,3,4,2,1,4,1,,,,1,2,1,2,,,,,,"Zhou, Yibin","Gu, Dongdi",,,,,yxz066000,yibin zhou
+ACCT,3350,5U1,2,4,1,7,3,,4,2,3,4,1,2,2,,,,,,"Gamino, John P",,,,,,jpg140630,john gamino
+ACCT,4334,5U1,,2,,3,4,1,,1,3,,,,,,,,,,"Hes, Christopher","Gu, Dongdi",,,,,cah041000,christopher hess
+ACCT,6193,SW1,,6,,,4,,,,,,,,,,,,1,,"Solcher, Steven J",,,,,,sjs107020,steven solcher
+ACCT,6202,0W1,,7,16,15,11,8,1,1,,,,,1,,,,,,"Janakiraman, Surya N","Parupati, Sunil K",,,,,suryaj,surya janakiraman
+ACCT,6202,CH1,,22,1,,,,,,,,,,,,,,,,"Barden, John P",,,,,,jpb063000,john barden
+ACCT,6292,SW1,,6,,,5,,,,,,,,,,,,1,,"Linsteadt, Chris C",,,,,,ccl019000,chris linsteadt
+ACCT,6301,5W1,,9,3,3,,,1,,,,,,1,,,,,,"Frost, Sandra M","Zhang, Yang",,,,,sjs107020,steven solcher
+ACCT,6305,0W1,,6,11,12,5,2,1,,,,,,1,,,,,,"Janakiraman, Surya N","Parupati, Sunil K",,,,,suryaj,surya janakiraman
+ACCT,6338,0W1,,11,2,1,6,,,1,,,,,1,,,,1,,"Goodrich, Mary Beth W",,,,,,goodrich,mary beth goodrich
+ACCT,6344,0W1,,8,12,11,8,7,,,,,,,,,,,,,"Gurun, Umit G","Yayvak, Berk",,,,,ugg041000,umit gurun
+ACCT,6344,0W2,,4,12,9,9,5,2,,,,,,,,1,,1,,"Gurun, Umit G","Yayvak, Berk",,,,,ugg041000,umit gurun
+ACCT,6353,PPA,,4,7,5,5,1,1,,,,,,,,,,,,"Solcher, Steven J",,,,,,sjs107020,steven solcher
+ACCT,6365,5U1,,9,4,11,11,7,2,3,,,,,,,,,2,,"Cheng, Samuel",,,,,,sxc109021,samuel cheng
+ACCT,6367,5U1,,39,3,2,2,,,,,,,,,,,,,,"Gamino, John P","Frost, Sandra M","Zhang, Yang",,,,jpg140630,john gamino
+ACCT,6384,0W1,,28,13,3,7,2,1,1,,,,,1,,,,2,,"Kromer, Jeffrey R","Yayvak, Berk",,,,,jrk013000,jeffrey kromer
+ACCT,6392,5U1,,11,9,10,14,3,2,,,,,,,,1,,1,,"Hes, Christopher","Gu, Dongdi",,,,,cah041000,christopher hess
+ACCT,6394,XU1,,22,,,,,,,,,,,,,,,,,"McNulty, Diane S",,,,,,dmcnulty,diane mcnulty
+ACN,6395,0W1,,14,,,,,,,,,,,,,,,,,"Hooge, Kimberley D",,,,,,koh170030,kimberley orsten hooge
+ACN,6V71,013,,,,,,,,,,,,,,,,,,17,"Golden, Richard M",,,,,,golden,richard golden
+ACN,6V81,0U1,,11,3,,,,,,,,,,,,,,,,"McWilliams, Steven P","Perry, Adam",,,,,sxm127330,steven mcwilliams
+ACN,6V81,5U1,,13,,,,,,,,,,,,,,,,,"Estevez, Leonardo W",,,,,,lwe071000,leonardo estevez
+AMS,2341,0H1,,1,2,3,4,1,,,,,,,,,,,,,"Naqvi, Syed K",,,,,,skn180000,syed naqvi
+AMS,3316,0W1,6,2,,,1,3,1,2,,1,1,,1,,,,,,"Winstead, Elizabeth L",,,,,,lwm061000,elizabeth winstead
+AMS,4379,0W1,6,2,,,,1,,2,,,,,,,,,,,"Winstead, Elizabeth L",,,,,,jxh100220,jennifer hudson
+ARTS,1301,0W1,25,2,1,,1,1,,,,,,,,,,,,,"Wilder, James E","Akinwole, Oluwadare   (Dare)",,,,,kxg190019,kelly grandjean
+ARTS,1316,5U1,4,4,,,1,,,,,,,,,,,,1,,"Takaloubighash, Maryam",,,,,,mxt210063,
+ARTS,3379,591,1,6,2,,,,,,,,,,2,,,,,,"Loving, Emily A","Baigmoradi, Fatemeh",,,,,exl097120,emily loving
+ATCM,2300,0W1,1,9,4,2,4,1,1,,2,3,2,1,,,,,,,"Martinez Ochoa, Angelica Miriam M","Khatri, Hamida",,,,,hxc176430,heidi cooley
+ATCM,2301,551,2,,1,1,1,,2,,,2,,,,,,,1,,"Marder, Amanda K",,,,,,tkn180000,tuoc nguyen
+ATCM,2321,0W1,3,6,2,,1,,,,1,,,,,,,,,,"Rashid, Mohammed Mizanur","Vo, Angelene H",,,,,lxi170030,laura imaoka
+ATCM,2330,0W1,,1,,,4,,2,1,1,,1,1,1,,,,,,"Nielsen, Christina R","Welwood, Samantha F",,,,,crn022000,christina nielsen
+ATCM,2330,0W2,,1,1,2,,2,1,3,,,,,3,,,,,,"O'Neill, Cynthia M",,,,,,crn022000,christina nielsen
+ATCM,2350,0U2,14,,,,,,,,,,,,,,,,,,"Hoggatt, Zoey X",,,,,,exb190001,zoey hoggatt
+ATCM,3301,0W1,1,4,11,1,1,,,,,,,,1,,,,,,"Shukla, Nishanshi A","Whitlock, Kathryn",,,,,lxi170030,laura imaoka
+ATCM,3301,0W2,,4,7,,,,,1,,,,,4,,,,,,"Chowdhury, Nusrat Zahan",,,,,,srm140030,stephen mallory
+ATCM,3306,0W1,4,3,6,3,4,2,,,,1,,,5,,,,,,"Lewis, Timothy M",,,,,,tml062000,timothy lewis
+ATCM,3307,0U1,1,1,4,6,,2,1,,,1,,1,1,,,,,,"McCord, Peter A",,,,,,pam062000,peter mccord
+ATCM,3309,0W1,7,9,2,,2,3,,,,,,,3,,,,,,"Fechter, Todd A",,,,,,taf051000,todd fechter
+ATCM,3337,0W1,8,8,1,,,,,,,,,,3,,,,,,"Wood, Harold G",,,,,,hgw021000,harold wood
+ATCM,3338,0W1,4,12,5,1,1,,2,1,,,1,,4,,,,2,,"Griffin, Troy",,,,,,txg121730,troy griffin
+ATCM,3350,0W1,5,3,10,1,5,2,,1,2,,,,,,,,,,"Hewitt, Sharon A","Asgharpour, Hadi",,,,,sxh090220,sharon hewitt
+ATCM,3366,0W1,6,7,6,2,,3,,3,2,,,,1,,,,,,"Irby, Cameron L","Hernandez, Luke A",,,,,cli170000,
+ATCM,3367,0W1,,1,6,6,4,,,2,,,,,2,,,,,,"Chandler, Adam W",,,,,,slb073000,steven billingslea
+ATCM,3368,0W1,5,4,9,1,3,1,2,,1,,,,3,,,,,,"Chandler, Adam W",,,,,,awc051000,adam chandler
+ATCM,3388,0W1,5,5,2,1,,2,,,,,,,1,,,,,,"Fraley, James M","Rahman, Mohammad K","Ikebude, Chukwuemeka",,,,lxb032000,james fraley
+ATCM,4319,0W1,2,4,1,,,,1,2,,,1,,2,,,,,,"Gardner, Frederick",,,,,,fxg230003,frederick gardner
+ATCM,4326,0W1,2,4,2,2,3,2,1,1,1,,,,,,,,,,"Heaslip, Audra","Cole, Abby",,,,,axh027000,audra heaslip
+ATCM,4330,0W1,2,2,1,1,1,,,1,,,,,3,,,,,,"Nielsen, Christina R","Lee, Yueh-Jung","Rahman, Maruf",,,,crn022000,christina nielsen
+ATCM,4338,0U1,,3,3,2,,,1,1,,,,,,,,,,,"Farrar, Eric T",,,,,,awc051000,adam chandler
+ATCM,4350,0W1,3,3,3,1,,2,,,1,,1,,2,,,,,,"Hewitt, Sharon A",,,,,,sxh090220,sharon hewitt
+ATCM,4364,051,8,4,,3,,,1,,,,,,1,,,,,,"Trosper, Elizabeth M","Nair, Vinayak",,,,,emt130130,elizabeth trosper
+ATCM,4384,551,8,12,1,,5,,,2,,,1,,,,1,,,,"Rheams, David C","Ayodabo, Sunday J",,,,,dcr093020,david rheams
+AUD,6216,0U1,,12,3,,,,,,,,,,,,,,,,"Cokely, Carol G","Woodford, Allison S",,,,,cgc016200,
+AUD,7240,5U1,,6,5,,1,,,,,,,,,,,,,,"Griffiths, Scott K","Zang, Andie L",,,,,skg180000,
+AUD,7280,064,,,,,,,,,,,,,,,,,,14,"Fowler, Stephanie L","Mosley, Cornetta",,,,,cgc016200,
+AUD,7280,0U1,,,,,,,,,,,,,,,,,,14,"Griffiths, Scott K",,,,,,skg180000,scott griffiths
+AUD,7310,5U1,,26,,,2,,,,,,,,,,,,,,"Clark, Jackie L","Crow, Sarah E",,,,,jclark,jackie clark
+AUD,7325,0U1,,15,,,,,,,,,,,,,,,,,"Thibodeau, Linda K","Warner-Czyz, Andrea D",,,,,thib,linda thibodeau
+AUD,8V97,064,,,,,,,,,,,,,,,,,,12,"Cokely, Carol G",,,,,,cgc016200,carol cokely
+BA,1320,5U1,,5,2,2,6,3,1,6,,,,,,,,,,,"Lewin, Peter","Hu, Jiawei",,,,,slk012100,stephen kiser
+BA,4090,091,,,,,,,,,,,,,,32,,,,,"Henderson, Thomas C",,,,,,txh093000,tom henderson
+BA,4090,092,,,,,,,,,,,,,,20,,,,,"Gamino, John P",,,,,,jpg140630,john gamino
+BA,4090,0U1,,,,,,,,,,,,,,24,,,,,"Henderson, Thomas C",,,,,,,thomas henderson
+BA,4090,0U2,,,,,,,,,,,,,,33,,,,,"Gamino, John P",,,,,,jpg140630,john gamino
+BA,4095,0W1,,,,,,,,,,,,,,115,,,,,"Alborz, Shawn",,,,,,sxa063000,shawn alborz
+BA,4V90,593,,,,,,,,,,,,,,18,,,,,"Henderson, Thomas C",,,,,,,thomas henderson
+BA,4V90,0U3,,,,,,,,,,,,,,23,,,,,"Henderson, Thomas C",,,,,,,thomas henderson
+BCOM,3300,051,2,2,8,1,3,1,,1,,,,,,,,,,,"Ali, Shazia",,,,,,shazia,ali shazia
+BCOM,3300,5U1,4,6,3,5,1,4,2,,,,,,,,,,,,"Loyless, Lauren",,,,,,jlf130030,jennifer fry
+BCOM,4300,5E1,2,2,7,2,2,,,,,,1,,,,,,,,"Moore, Sarah E",,,,,,jmw077000,sarah moore
+BCOM,4300,0U1,,4,2,4,,5,3,,1,,,,1,,,,,,"Blockley, Caylin",,,,,,kxl164330,kathryn lookadoo
+BCOM,4300,0U2,,,2,3,3,3,3,3,,1,,,1,,,,,,"Fry, Jennifer L",,,,,,meg012400,margaret smallwood
+BCOM,4300,0U4,,3,6,4,3,6,3,7,3,,1,1,1,,,,,,"Harrison, Megan",,,,,,kxl164330,kathryn lookadoo
+BCOM,4300,5U1,,1,2,,9,,,6,1,,,,,,,,,,"Hornsby, Melanie",,,,,,kxt200010,katrina tamez
+BIOL,2111,0U1,4,6,4,1,,1,,,,,,,,,,,,,"Sarcar, Subha","Maity, Tuhina","Xia, Jing",,,,candas,mehmet candas
+BIOL,2111,0U2,1,5,1,1,2,2,,,,,,,,,,,,,"Sarcar, Subha","Xia, Jing","Maity, Tuhina",,,,candas,mehmet candas
+BIOL,2112,0U1,18,2,,3,4,5,,1,1,1,,1,3,,,,,,"Wu, Zhuoru","Xu, Linyi",,,,,candas,mehmet candas
+BIOL,2112,0U2,10,5,2,1,2,,1,1,1,2,,,5,,,,,,"Wu, Zhuoru","Xu, Linyi",,,,,candas,mehmet candas
+BIOL,2281,3U1,2,6,4,1,3,1,1,,,,,,1,,,,,,"Lin, Wen J","Mittal, Shubham","Basu, Ujjaini","Briggs, Alyssa A","Tien, Hsin-Jung","Do, Hung P",wenju,wen ju lin
+BIOL,2281,3U2,,3,2,4,,,2,1,1,,2,1,,,,,,,"Lin, Wen J","Yaqub, Muneer O","Ratevosyan, Richard","Mittal, Shubham","Liu, Junyu","Easterwood, Shayne",wenju,wen ju lin
+BIOL,2281,3U3,,2,3,2,,1,4,3,4,1,1,,1,,,,,,"Lin, Wen J","Basu, Ujjaini","Briggs, Alyssa A","Tien, Hsin-Jung","Do, Hung P","Easterwood, Shayne",wenju,wen ju lin
+BIOL,2311,0U1,5,11,5,2,2,3,,,,,,,,,,,,,"Sarcar, Subha","Maity, Tuhina","Xia, Jing","Salamat, Narges",,,candas,mehmet candas
+BIOL,2312,0U1,28,7,2,4,6,5,1,2,2,3,,1,8,,,,,,"Wu, Zhuoru","Tiwari, Suman","Xu, Linyi","Alemi, Parinazsadat","Elhawary, Ezzeldin N","Thomas, Nathaniel",candas,mehmet candas
+BIOL,3101,0U1,6,5,4,11,3,3,2,2,2,1,1,,,,,,,,"Srikanth, Uma",,,,,,ixb053000,irina borovkov
+BIOL,3101,0U2,8,8,7,7,4,3,1,1,,1,,,,,,,,,"Srikanth, Uma",,,,,,ixb053000,irina borovkov
+BIOL,3101,0U3,8,9,5,3,2,3,5,,2,1,1,1,,,,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3101,0U4,3,4,8,8,6,4,2,,,1,,,,,,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3101,0U5,6,10,3,3,8,3,1,2,1,1,,1,,,1,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3101,0U6,5,6,3,4,4,5,1,1,,,,3,,,,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3102,0U1,1,2,,,3,3,,,,,,1,,,,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3102,0U2,1,3,1,3,2,1,,,,,,,,,,,,,"Srikanth, Uma",,,,,,ukrish,uma srikanth
+BIOL,3161,0U1,1,5,9,8,5,2,1,2,3,,,,2,,,,,,"Candas, Mehmet","Boyd, Stefanie D","Zhabilov, Dannie","Akter, Zakia","Hossain, Md Liakat",,candas,mehmet candas
+BIOL,3161,0U2,,2,5,2,4,3,3,1,2,,,,,,,,,,"Candas, Mehmet","Boyd, Stefanie D","Zhabilov, Dannie","Akter, Zakia","Hossain, Md Liakat",,candas,mehmet candas
+BIOL,3162,0U1,,2,2,2,2,4,2,2,,,,,,,,,,,"Candas, Mehmet","Boyd, Stefanie D",,,,,candas,mehmet candas
+BIOL,3203,1U1,1,3,4,2,3,2,,,,,,,,,,,,,"Maynard, Caitlin S","Shipman, Braden M","Bonde, Namrata Dinesh","Wickramasinghe, Piumi B",,,cmb170830,
+BIOL,3203,1U3,2,5,2,,2,2,,,,,,,,,,,,,"Maynard, Caitlin S","Wickramasinghe, Piumi B","Bonde, Namrata Dinesh","Shipman, Braden M",,,cmb170830,
+BIOL,3301,0U1,36,42,30,36,27,21,12,6,5,5,2,5,,,1,,,,"Srikanth, Uma","Maity, Subhajit","Patel, Umar J","Kwende, Sharon A","Maiti, Dibyo","Afolami, Olufemi Ifeoluwa",ixb053000,irina borovkov
+BIOL,3302,0U1,2,4,1,4,5,4,,,,,,1,,,,,,,"Srikanth, Uma","Gomez, Jessica E","Falah, Rafah M",,,,ukrish,uma srikanth
+BIOL,3303,0U1,6,11,6,1,7,7,1,1,8,,1,1,1,,,,,,"Boyd, Stefanie D","Zhi, Jiahe","Zhang, Bei","Upreti, Chahat",,,sdb074000,stefanie boyd
+BIOL,3318,0U1,30,17,6,4,4,3,3,1,1,,,1,1,,,,,,"Henson, Uyen N",,,,,,unh130030,uyen henson
+BIOL,3361,0U1,1,6,11,10,9,5,3,3,5,,,,2,,,,,,"Candas, Mehmet","Boyd, Stefanie D","Zhabilov, Dannie","Akter, Zakia",,,candas,mehmet candas
+BIOL,3362,0U1,,1,2,2,2,4,2,2,,,,,,,,,,,"Candas, Mehmet","Boyd, Stefanie D","Petter, Andrew T","Soladogun, Adedamola S","Sunder Singh, Jacqulene Preethi",,candas,mehmet candas
+BIOL,3380,3U1,,,2,,1,2,,3,,1,1,1,3,,,,,,"Rippel, Scott A","Pickett, Elizabeth A","Liu, Yihan","Berisha, Eranda",,,rippel,scott rippel
+BIOL,3380,3U4,,,2,1,,4,,,,2,1,1,3,,,,,,"Pickett, Elizabeth A","Rippel, Scott A","Liu, Yihan","Berisha, Eranda",,,eaw016100,elizabeth pickett
+BIOL,3455,3U1,1,1,3,1,,1,,1,1,1,1,1,3,,,,,,"Ramirez, Ruben D","Deese, Alexander R","Hisam, Fatima",,,,rdr092000,ruben ramirez
+BIOL,3455,3U2,,,,1,1,3,2,2,1,,1,1,6,,,,1,,"Ramirez, Ruben D","Veera, Kavya","Gong, Hanling","Cornelius, Samuel A",,,rdr092000,ruben ramirez
+BIOL,3456,3U1,1,3,3,1,5,3,2,,2,2,,,1,,,,,,"Yu, Wen-Ho","Balaji, Sharan Kumar","Arugonda, Ravali",,,,why061000,wen ho yu
+BIOL,4380,3U1,,5,1,3,2,1,1,,,,,1,1,,,,,,"Maynard, Caitlin S","Konakalla, Anisha Reddy","Shryock, Douglas G","Joshi, Ketki","Dhar, Roopal",,cmb170830,
+BIOL,5330,0W1,,8,1,,1,,,,,,,,,,,,,,"Hajeri, Vinita",,,,,,vxh151030,vinita hajeri
+BIOL,8V01,018,,,,,,,,,,,,,,,,,,10,"Zhang, Li",,,,,,lxz075000,li zhang
+BIS,2190,0W1,5,2,,3,,1,2,1,,,,,,,,,,,"Dornback, Sarah","Henry, Loreen S","Whistler, Holly K",,,,cwe011000,christopher edwards
+BIS,3320,0U1,1,5,3,3,,1,1,,1,,,,1,,,,,,"Wright, David A",,,,,,wright,david wright
+BLAW,2301,5U1,,3,5,2,4,4,2,1,2,,2,,3,,,,,,"Betanzos, Christina L",,,,,,clb120030,christina betanzos
+BMEN,3320,051,2,4,,2,,1,1,1,,,,,1,,,,,,"Ali, Tariq M","Chaudhary, Sugandha",,,,,tma051000,tariq ali
+BMEN,4388,0U1,,1,10,8,,,1,,,,,,,,,,,,"Polk, Todd W","Tjahjono, Nathaniel S",,,,,twp017000,todd polk
+BPS,4305,5U1,,9,21,7,1,1,,,,,,,,,,,,,"Song, You-Xiang",,,,,,smc130730,shawn carraher
+BPS,4395,5U1,,38,6,3,,,,1,1,,,,,,,,,,"Henderson, Thomas C",,,,,,txh093000,tom henderson
+BPS,4395,5U2,,15,5,10,10,,5,,,,,,,,,,,,"Segelhorst, Jon P",,,,,,jps210007,
+BPS,6310,0W1,,14,12,7,5,,,,,,,,,,,,,,"Xia, Jun","Wang, Jiyu",,,,,chasteen,larry chasteen
+BPS,6310,GW1,,4,6,4,3,1,,,,,,,,,,,1,,"Choi, Emily",,,,,,exc113230,emily choi
+BPS,7303,0U1,,24,,,,,,,,,,,,,,,,,"Watson, John M",,,,,,jmw077000,john watson
+BUAN,4090,091,,,,,,,,,,,,,,14,,,,,"Owens, Dawn M",,,,,,dmo130130,dawn owens
+BUAN,6009,091,,,,,,,,,,,,,,,,,,19,"Shekhar, Gaurav",,,,,,gxs150130,gaurav shekhar
+BUAN,6009,0U1,,,,,,,,,,,,,3,,,,,146,"Shekhar, Gaurav",,,,,,gxs150130,gaurav shekhar
+BUAN,6009,SU1,,,,,,,,,,,,,1,,,,1,38,"Hefley, William E",,,,,,weh150130,william hefley
+BUAN,6312,5W1,,6,10,10,1,1,,,,,,,,,,,,,"Chudik, Alexander",,,,,,axc180061,
+BUAN,6320,5U1,,25,17,1,5,,,,,,,,3,,1,,,,"Kamalzadeh, Hossein","Sun, Kai",,,,,kxs018700,
+BUAN,6337,0W1,,9,10,5,2,4,,1,,,,,,,,,1,,"Subramanian, Upender","Park, Yeowoon",,,,,uxs092000,upender subramanian
+BUAN,6337,5W1,,5,4,3,3,,,,,,,,,,,,,,"Murthi, B P","Alavi, Seyyedeh Soogand",,,,,murthi,b p murthi
+BUAN,6337,SU1,,25,,,,,1,,,,,,,,,,,,"Allison, Kyle",,,,,,,kyle allison
+BUAN,6340,5U1,,4,9,2,1,,,,,,,,,,,,,,"Pandian, Thiru","Mallipeddi, Srinaga Mouneeswar",,,,,jap090020,jason parker
+BUAN,6340,SW1,,12,1,2,,,,,,,,,,,,,,,"Koju, Vijay",,,,,,vxk220074,vijay koju
+BUAN,6341,5U1,,2,2,2,2,,,,,,,,,,,,2,,"Sabir, Muhammad F","Liu, Yihong",,,,,mfs170430,muhammad sabir
+BUAN,6341,SW1,,15,,,,,,,,,,,,,,,,,"Zemoodeh, Amir",,,,,,axz120930,amir zemoodeh
+BUAN,6344,0W1,,9,4,6,4,,,1,,,,,,,,,,,"Mehra, Amit","Xie, Si",,,,,axm078200,amit mehra
+BUAN,6346,5U1,,8,7,4,3,,1,,,,,,,,,,,,"El-khodari, Gasan E","Mallipeddi, Srinaga Mouneeswar",,,,,jxp180019,jerry perez
+BUAN,6346,SW1,,12,7,3,,,,,,,,,,,,,,,"Perez, Jerry",,,,,,jxp180019,jerry perez
+BUAN,6359,5U1,,10,1,,1,5,3,3,,,,,3,,,,,,"Ramezani, Rasoul","Wang, Zihan",,,,,rxr145930,rasoul ramezani
+BUAN,6390,5U1,,10,,,,,,,,,,,,,,,,,"Aria, Reza","Kumar, Sahejbir Singh",,,,,gxs150130,gaurav shekhar
+BUAN,6398,0W1,,6,2,3,2,5,2,3,,,,,1,,,,1,,"Ramezani, Rasoul","Wu, Jie",,,,,cxk162830,
+BUAN,6398,5U1,,21,1,,2,,1,,,,,,,,,,,,"Nguyen, Hien T","Wu, Jie",,,,,axa134231,athena alimirzaei
+BUAN,6398,SU1,,3,1,4,,1,,,,,,,1,,,,,,"Ramezani, Rasoul",,,,,,rxr145930,rasoul ramezani
+BUAN,6398,SW1,,18,3,1,2,,,,,,,,,,,,,,"Nguyen, Hien T","Wu, Jie",,,,,htn170130,hien nguyen
+BUAN,6V98,0U1,,,,,,,,,,,,,,,,,3,62,"Shekhar, Gaurav",,,,,,gxs150130,gaurav shekhar
+CE,3161,0W1,,4,5,5,3,1,,,,,,,,,,,,,"Mezenner, Rabah","Parchamdar, Baharealsadat",,,,,rxm129730,rabah mezenner
+CE,3301,0U1,,2,1,1,1,1,,1,,1,2,,3,,,,,,"Tacca, Marco","Kim, Eunjin",,,,,kamran,kamran kiasaleh
+CE,3303,0H1,2,1,1,1,5,4,2,2,1,,,,2,,,,,,"Kehtarnavaz, Nasser","Karbalayghareh, Mehdi",,,,,nxk019000,nasser kehtarnavaz
+CE,3311,5U1,3,,3,6,3,2,1,1,,,,,,,,,,,"Pourkamali Anaraki, Siavash","Han, Weijie",,,,,cms057000,carl sechen
+CE,4388,0U1,,14,,,,,,,,,,,,,,,,,"Tacca, Marco",,,,,,dinesh,dinesh bhatia
+CE,4389,0U1,,9,,,2,,,,,,,,,,,,,,"Bhatia, Dinesh K","Parchamdar, Baharealsadat",,,,,dinesh,dinesh bhatia
+CGS,3361,0W1,9,,2,1,,,,,,,,,,,,,,,"Hooge, Kimberley D",,,,,,kls190004,kendra seaman
+CGS,4352,0W1,,6,3,4,5,,,1,,,,,,,,,,,"Kumar, Pushpa S","Allu, Sai Haneesh",,,,,edo042000,erika orrick
+CHEM,1111,1U1,5,4,,1,,1,,,,,1,,1,,,,,,"Sra, Amandeep K","Heidari, Sahar","Mortensen, Marie L",,,,sgavva,sandhya gavva
+CHEM,1112,1U1,4,6,1,1,4,,,2,,,,,,,,,,,"Abeykoon, Nimali C","Darwin, Cary","Sunga, Sean Alec Lois B",,,,sgavva,sandhya gavva
+CHEM,1112,1U2,1,6,3,1,3,2,,1,,,,,,,,,,,"Huang, Yu","Yamada, Kyohei","Howlett, Thomas S",,,,sgavva,sandhya gavva
+CHEM,1311,0U1,4,3,5,5,3,5,4,1,,3,1,1,6,,,,,,"Sra, Amandeep K","Giri, Sachin","Kumari, Sneha",,,,aks057000,amandeep sra
+CHEM,1312,0U1,2,12,4,10,6,5,9,9,11,2,5,5,9,,3,,,,"Huang, Yu","Sheybani, Simin","Firouzi, Hamid Reza",,,,dieckgr,gregg dieckmann
+CHEM,2323,0U1,8,16,1,1,9,8,5,9,4,5,1,,8,,,,,,"Tran, Daniel N",,,,,,sibertj,john sibert
+CHEM,2325,0U1,5,3,2,2,4,3,1,2,3,,4,,3,,,,,,"Sibert, John W",,,,,,scortes,sergio cortes
+CHEM,8V91,008,,,,,,,,,,,,,,,1,,,9,"Balkus, Kenneth J",,,,,,balkus,kenneth balkus
+CHEM,8V91,024,,,,,,,,,,,,,,,,,,12,"Stefan, Mihaela C",,,,,,mci071000,mihaela stefan
+CHEM,8V91,039,,,,,,,,,,,,,,,,,,11,"Meloni, Gabriele",,,,,,gxm152330,gabriele meloni
+CHEM,8V91,042,,,,,,,,,,,,,,,,,,11,"Gevorgyan, Vladimir",,,,,,vxg190013,vladimir gevorgyan
+CLDP,3342,0W1,,22,,,1,,,,,,,,,,,,,,"Bonner, Deborah","Redig, Samantha L","Williams, Denise D",,,,dbonner,deborah bonner
+CLDP,4344,0W1,,6,8,1,4,1,1,1,2,,,,,,,,,,"Hunsley, Jana","Li, Yue",,,,,jxh220032,jana hunsley
+COMD,5340,0U1,,20,,,,,,,,,,,,,,,,,"Neale, Hannah D","Denicola-Prechtl, Kathleen M",,,,,aldridge,michelle aldridge
+COMD,6111,0W1,,,,,,,,,,,,,,,,,,12,"Aldridge, Michelle A",,,,,,aldridge,michelle aldridge
+COMD,6112,0W1,,,,,,,,,,,,,,,,,,19,"Walsh, Diane G",,,,,,dxg022000,diane walsh
+COMD,6320,0U1,,13,,,2,,,,,,,,,,,,,,"Carter, Jessica A","Smith, Irma E",,,,,jar032000,
+COMD,6330,005,,,,,,,,,,,,,,,,,,10,"Raiff, Amy M",,,,,,,amy raiff
+COMD,6330,042,,,,,,,,,,,,,,,,,,10,"Raiff, Amy M",,,,,,,amy raiff
+COMD,7303,0U1,,96,,,16,,,1,,,,,,,,,,,"Dean, Lucinda L","Kenedi, A Helen I",,,,,lxl018300,
+COMD,7345,0U1,,25,,,5,,,,,,,,,,,,,,"Cook, Lori G",,,,,,lgc011100,lori cook
+COMD,7V68,0U1,,36,,,,,,,,,,,,,,,,,"Sale, Felicity F",,,,,,ffs013000,
+COMD,7V86,0U1,,25,,,,,,,,,,,,,,,,,"Rich, Judith B",,,,,,jbm014600,
+COMD,7V86,0U2,,19,,,1,,,,,,,,,,,,,,"Gollis, Christina R",,,,,,crm053000,christina gollis
+COMD,7V89,0U1,,13,,,,,,,,,,,,,,,,,"Walsh, Diane G",,,,,,dxg022000,diane walsh
+COMM,1311,0H2,5,9,2,,1,,,,,,,,,,,,,,"Tanner, Lari J",,,,,,aam141730,allison templeton
+COMM,1311,0W1,2,1,2,4,2,,2,,,,,,,,1,,,,"Nash, Michelle A",,,,,,contemp,karen baynham
+COMM,1311,0W2,8,6,,,1,,1,,,,1,,1,,,,,,"Saenz, Michael A",,,,,,aam141730,allison templeton
+COMM,1315,0W1,4,,2,1,2,1,1,2,,,,1,4,,,,1,,"Skiles, Bradley W",,,,,,jxw174630,jason warren
+COMM,1315,0W2,8,5,,1,1,,,,,,,,,,,,,,"Cannon, Charles",,,,,,cxc190014,charles cannon
+COMM,1315,0W3,,,3,3,2,,2,2,,,,,1,,,,,,"Bromberg, Mike",,,,,,bws150030,bradley skiles
+COMM,3342,0S1,6,1,,2,2,1,1,,,,,,,,,,,,"King, Carie S",,,,,,jcg053000,john gooch
+COMM,3352,0W1,6,8,1,,,,1,,1,,1,,,,,,,,"Johnson, Janet L",,,,,,jlj065000,janet johnson
+CRIM,1301,0U1,,4,2,1,1,1,,1,,,1,,,,,,,,"Escobedo, Allison E","Wang, Wenyi",,,,,jxr122330,
+CRIM,1307,0U1,1,6,1,6,2,1,,,,,,,,,,,,,"Geibler, Robert","Wang, Wenyi",,,,,dxd171830,dragana derlic
+CRIM,3301,0W1,5,10,7,1,5,2,2,1,1,1,,,1,,,,1,,"Manuel, Samantha A","Islam, Mohammad Touhidul",,,,,mxs158030,samantha manuel
+CRIM,3302,0W1,,3,,4,1,,1,3,,,,,,,,,,,"Rodriguez, Diana C","Hong, Sunmin",,,,,peo091000,elmer polk
+CRWT,2301,0W1,5,3,,,1,,,,,,,1,3,,,,,,"Brazeal Garza, Lauren E",,,,,,lxb190011,lauren brazeal garza
+CRWT,3354,5W2,,3,5,1,1,,,,,,,,,,,,,,"Goldberg, Paula",,,,,,pxg180023,paula goldberg
+CS,1134,1U1,11,7,1,1,1,,,,,,,,,,,,,,"Nagar, Anurag","Bhardwaj, Ayush",,,,,gxa120930,gordon arnold
+CS,1136,1U1,7,3,1,3,1,1,2,,,,2,,1,,,,,,"Gupta, Neeraj K","Guo, Hung-Jui","Birashk, Amin",,,,gxa120930,gordon arnold
+CS,1325,0U1,3,,2,3,7,5,2,3,,,1,1,,,,,,,"Paulk, Mark C","Hossen, Md Helal",,,,,mcp130030,mark paulk
+CS,1334,0U1,10,7,4,4,1,,,,,,,,,,1,,,,"Nagar, Anurag","Lee, Jaeseong",,,,,axn112530,anurag nagar
+CS,1335,5U1,8,5,5,2,2,,,,1,,,,,,,,,,"Erbatur, Serdar","Bansal, Rishita",,,,,sxe190003,serdar erbatur
+CS,1336,0U1,3,2,1,1,6,2,6,1,,2,,,2,,,,,,"Gupta, Neeraj K","Birashk, Amin",,,,,gxa120930,gordon arnold
+CS,1337,0U1,3,5,3,6,10,5,2,,,,,,,,,,,,"Dollinger, Scott M","Kushwaha, Saksham Singh",,,,,cshields,charles shields
+CS,1337,5U1,2,7,,3,3,1,,,2,,,,3,,,,,,"Gupta, Neeraj K","Khargonkar, Ninad Arun",,,,,cid021000,chris davis
+CS,2305,5U1,1,10,6,5,6,3,1,,2,1,,,,,,,,,"Davis, Chris I","Cai, Yuchen",,,,,tfarage,timothy farage
+CS,2336,0U1,,3,1,3,5,,1,,,,1,,,,,,1,,"Min, Richard K","Hossen, Md Helal",,,,,kkhan,ziaullah khan
+CS,2336,5U1,4,2,7,1,4,4,2,1,1,,1,,,,,,,,"Khan, Kamran Z","Mahmud, Saif Uddin","Rong, Xiaokai",,,,kkhan,ziaullah khan
+CS,2340,0U1,10,3,4,3,1,1,3,1,1,,3,,3,,,,,,"Karami, Gity","Rathnasuriya, Ravishka S",,,,,kjm160430,karen mazidi
+CS,2340,0U2,3,,3,,,3,1,2,,1,,,2,,,,,,"Zhao, Yi","Rathnasuriya, Ravishka S",,,,,zhao,yi zhao
+CS,3305,0U1,1,5,2,6,2,1,1,,,,,,1,,,,,,"Davis, Chris I","Hatfield, Cody R",,,,,tfarage,timothy farage
+CS,3305,0W1,1,4,3,1,4,,,3,,,,,,,,,,,"Farage, Timothy P","Cai, Yuchen",,,,,mns086000,meghana satpute
+CS,3305,0W2,3,17,6,8,5,,,,,,1,,,,,,,,"Farage, Timothy P","Rong, Xiaokai",,,,,mns086000,meghana satpute
+CS,3341,0U1,,1,1,2,4,3,,4,3,2,2,3,1,,,,,,"Guo, Huizhen","Goel, Jaidev",,,,,tgw100020,tristan whalen
+CS,3345,0U1,1,5,3,2,,2,1,,3,,,,1,,,,,,"Zhao, Yi","Khargonkar, Ninad Arun",,,,,ozbirn,greg ozbirn
+CS,3354,0U1,1,2,1,6,4,4,3,2,2,1,3,,,,,,,,"Paulk, Mark C","Guo, Hung-Jui",,,,,mxn143230,mehra borazjany
+CS,3377,0U1,3,8,11,3,5,2,3,2,,1,,,,,,,,,"Karami, Gity",Jishnu J,,,,,gxk180009,gity karami
+CS,4141,6U1,4,6,1,3,1,,,,,,,,2,,,,,,"Nguyen, Nhut","Song, Zihe",,,,,nhutnn,nhut nguyen
+CS,4141,6U2,7,8,2,,,1,,,,,,,,,,,,,"Nguyen, Nhut","Song, Zihe",,,,,nhutnn,nhut nguyen
+CS,4337,0U1,7,3,6,2,4,,2,3,,3,3,,,,,,,,"Omer, Jalal S","Mahmud, Saif Uddin",,,,,cid021000,chris davis
+CS,4341,0U1,4,3,2,5,6,3,,5,5,,,4,,,,,,,"Nguyen, Nhut","Omidi, Zahra",,,,,nhutnn,nhut nguyen
+CS,4347,0U1,9,3,,3,4,1,1,2,,1,,,1,,,,,,"Omer, Jalal S","Wang, Zilong",,,,,exc067000,ebru cankaya
+CS,4347,0U2,2,10,6,1,9,,,2,,,,,,,,,1,,"Khan, Kamran Z","Singhal, Yatharth","Wang, Zilong",,,,mgc013000,michael christiansen
+CS,4348,0U1,,4,6,2,3,3,,,1,,,,1,,,,,,"Mittal, Neeraj","Hatfield, Cody R",,,,,sxb155530,
+CS,4348,0U2,,1,3,4,10,2,1,1,3,,1,,1,,,,,,"Prakash, Ravi","Miao, Miao",,,,,axg173030,ravi prakash
+CS,4349,0U1,3,6,1,3,5,2,2,3,,,,,,,,,,,"Chitturi, Bhadrachalam","Wang, Guanghua",,,,,exc067000,ebru cankaya
+CS,4352,0S1,15,1,,,,,,,,,,,,,,,,,"Orrick, Erika D",,,,,,edo042000,erika orrick
+CS,4352,0W1,2,7,9,7,3,1,1,,,,,,,,,,,,"Kumar, Pushpa S","Allu, Sai Haneesh",,,,,edo042000,erika orrick
+CS,4365,0U1,2,,7,5,3,8,8,3,,,,,,,,,,,"Min, Richard K","Jiang, Kai",,,,,rkm010300,richard min
+CS,4375,5U1,5,10,10,3,10,,,5,2,1,2,,,,,,,,"Khan, Kamran Z","Liu, Ximeng",,,,,kkhan,ziaullah khan
+CS,4376,0U1,3,4,2,4,3,3,3,4,1,1,,1,,,,,,,"Chung, Lawrence","Li, Dongcheng",,,,,mcp130030,mark paulk
+CS,4384,0U1,,6,5,8,10,4,2,,,,,,1,,,,,,"Erbatur, Serdar","Bansal, Rishita",,,,,cshields,charles shields
+CS,4384,0U2,1,5,5,4,5,4,3,1,4,,,,,,,,,,"Davis, Chris I","Singhal, Yatharth",,,,,cid021000,chris davis
+CS,4390,0U1,,12,,1,2,7,3,3,3,,1,4,1,,,,,,"Nguyen, Nhut","Li, Congzhou",,,,,kvl140030,khiem le
+CS,5343,0U1,,4,,2,1,2,,2,,,,,,,,,,,"Gupta, Neeraj K","Amato, James C",,,,,nkg140130,neeraj gupta
+CS,6301,0U1,,32,1,,,,,,,,,,,,,,,,"Thuraisingham, Bhavani M","Lee, Jaeseong",,,,,bxt043000,bhavani thuraisingham
+CS,6314,5U1,,24,8,3,,,,,,,,,,,,,,,"Karami, Gity","Birashk, Amin",,,,,rkm010300,richard min
+CS,6350,0U1,,40,20,2,,,,,,,,,,,,,1,,"Nagar, Anurag","Su, Ke",,,,,axn112530,anurag nagar
+CS,6359,0U1,,3,3,8,1,1,,,,,,,,,,,,,"Chung, Lawrence","Bhardwaj, Ayush",,,,,mxn143230,mehra borazjany
+CS,6364,0U1,,9,1,2,3,2,,1,,,,,,,,,,,"Schweitzer, Haim","Mao, Wei",,,,,haim,haim schweitzer
+CS,6364,0U2,,12,3,3,5,3,1,,,,,,,,,,,,"Schweitzer, Haim","Mao, Wei",,,,,haim,haim schweitzer
+CS,6375,5U1,,22,9,1,2,,,,,,,,,,,,,,"Nagar, Anurag","Amato, James C",,,,,haim,haim schweitzer
+CS,6375,MU1,,7,3,,,,,,,,,,,,,,1,,"Nagar, Anurag",,,,,,axn112530,anurag nagar
+CS,6378,0U1,,7,3,2,1,,,,,,,,1,,,,,,"Prakash, Ravi","Miao, Miao",,,,,nxm020100,neeraj mittal
+CS,6385,0W1,,51,8,2,3,1,,,,,,,,,,,,,"Farago, Andras","Das, Souvik",,,,,farago,andras farago
+ECON,2301,0U1,1,,,1,1,2,,2,2,,3,,1,,,,,,"Barua Soni, Prajyna P",,,,,,zxc151030,zhengyang chen
+ECON,2302,5U1,,2,5,7,1,,2,1,1,,,,1,,,,,,"Lu, Yundi",,,,,,zxz110530,zeyu zhang
+ECON,3381,0U1,1,6,3,1,4,1,1,1,,,,,,,,,,,"Grover, William C",,,,,,wcg071000,william grover
+ECS,3390,051,3,2,4,1,,6,2,,,,,,,,,,,,"Glauser, Janece B",,,,,,lem150330,lindsay moore
+ECS,3390,091,13,4,,,1,,,,,,,,1,,,,,,"Scally, Deborah A",,,,,,das,deborah scally
+ECS,3390,0S1,14,,,1,1,,,,,,,,,,,,,,"Montgomery, Christina F",,,,,,cxr088000,christopher ryan
+ECS,3390,0W1,7,7,3,,,,,,,,,,,,,,,,"Johnson, Janet L",,,,,,cxl085200,carie king
+ECS,3390,0W2,1,12,1,1,1,,,,1,,,,,,,,,,"Johnson, Janet L",,,,,,das,deborah scally
+ECSC,3177,0U1,,,,,,,,,,,,,,23,,,,,"Stewart, Mary Ann C",,,,,,jda071000,mary ann stewart
+ECSC,4378,0U1,,10,,,,,,,,,,,,,,,,,"Stewart, Mary Ann C",,,,,,jda071000,mary ann stewart
+ECSC,5177,0U1,,,,,,,,,,,,,,,,,1,195,"Stewart, Mary Ann C",,,,,,jda071000,mary ann stewart
+ECSC,5179,0U1,,,,,,,,,,,,,,,,,,83,"Stewart, Mary Ann C",,,,,,jda071000,mary ann stewart
+EE,3161,0W1,1,3,3,3,,,1,,,,,,,,,,,,"Mezenner, Rabah","Parchamdar, Baharealsadat",,,,,rxm129730,rabah mezenner
+EE,3202,0U1,,2,4,1,1,2,1,,,,,,1,,,,,,"Kiasaleh, Kamran","Tayeb Naimi, Shideh","Uddin, Mohammed Belal",,,,kamran,kamran kiasaleh
+EE,3301,0U1,1,,1,2,2,2,,1,1,,,,,,,,,,"Tacca, Marco","Kim, Eunjin",,,,,kamran,kamran kiasaleh
+EE,3311,5U1,1,3,5,5,,,1,,1,,,,,,,,,,"Pourkamali Anaraki, Siavash","Han, Weijie",,,,,cms057000,carl sechen
+EE,4203,0H1,3,1,,1,3,2,1,1,,,,1,,,,,,,"Kehtarnavaz, Nasser","Alam, Lamia",,,,,nxk019000,nasser kehtarnavaz
+EE,4389,0U1,,10,,,5,,,,,,,,,,,,,,"Bhatia, Dinesh K","Parchamdar, Baharealsadat",,,,,dinesh,dinesh bhatia
+EEMF,6372,5U1,,6,2,3,1,,,,,,,,,,,,,,"Tinker, Mark T",,,,,,mtinker,mark tinker
+EEOP,6314,0H1,,13,3,,,,,,,,,,,,,,,,"Tamil, Lakshman S",,,,,,laxman,lakshman tamil
+ENGR,2300,0W1,1,7,,2,4,1,3,2,2,,,,5,,,,,,"Akin, Bilal","Jena, Sritam",,,,,bxa123330,bilal akin
+ENGR,3300,0U1,2,11,2,3,4,3,5,13,,,1,,,,,,,,"Ali, Mohammed Z","Ahmed, Sabrina",,,,,mohammed,ali mohammed
+ENGR,3341,0U1,1,3,1,1,2,,,,1,,1,,,,,,,,"Fonseka, John P","Peng, Genchang",,,,,kjp,john fonseka
+ENTP,3301,0U1,2,6,7,9,6,3,,,,,1,,,,,,,,"Nichols, Paul M",,,,,,sxg172931,steven guengerich
+ENTP,6370,0W1,,7,11,12,13,2,,1,,,,,1,,,,,,"Kimzey, Jackie R","Shen, Jia",,,,,jxk092000,jackie kimzey
+EPPS,2302,0W1,,3,3,1,2,1,,,,,,,,,,,,,"Yoon, Youngseok",,,,,,pva150330,prajakti akarte
+EPPS,7V81,051,,12,,,,,,,,,,,,,,,,,"Ho, Ka-Yiu",,,,,,kxh022100,karl ho
+FILM,1303,051,2,5,3,,,,,,,,,,,,,,,,"Shafek, Amal S","Khoshniat, Ahmad",,,,,ass106020,amal shafek
+FILM,1303,0W1,7,3,6,4,4,,,,1,,1,,1,,,,,,"Almroani, Nouf Mfdhi H",,,,,,nma160130,nouf mfdhi almroani
+FILM,2332,091,,2,1,3,4,2,,3,2,,2,1,1,,,,,,"Prakash, Arya",,,,,,exb210012,emily baker
+FIN,3300,0W1,,15,,,13,,,6,,,1,,2,,,,,,"Lynch, Julie","Hamzeh, Alireza",,,,,jxl180030,julie lynch
+FIN,3320,0U2,,10,8,,8,,,4,,,,,,,,,,,"Wen, Yaxin",,,,,,jxm158130,jeffrey manzi
+FIN,3320,0W1,2,11,5,8,7,3,2,3,1,1,,,,,,,,,"Manzi, Jeff",,,,,,jxm158130,jeffrey manzi
+FIN,3320,0W2,1,10,1,5,7,4,3,3,6,,,,3,,,,,,"Manzi, Jeff",,,,,,jxm158130,jeffrey manzi
+FIN,3360,0W1,,9,7,8,11,3,1,2,1,,,,,,,,1,,"Pedigo, Madison F",,,,,,mfp013000,madison pedigo
+FIN,3365,0W1,2,6,3,6,10,2,1,2,1,,,,1,,,,,,"DeCourcy, George A",,,,,,gad075000,george decourcy
+FIN,3390,0U1,5,3,5,1,4,3,2,1,4,2,2,7,1,,,,,,"El-Ashmawi, Amal H",,,,,,ahe013000,amal el ashmawi
+FIN,4080,091,,,,,,,,,,,,,,38,,2,,,"Nishi, Hirofumi",,,,,,sdp093020,
+FIN,4080,0U1,,,,,,,,,,,,,,34,,,,,"Nishi, Hirofumi",,,,,,hxn210016,hirofumi nishi
+FIN,4300,0U1,3,,1,3,5,4,3,5,1,,,,,,,,,,"Oyima-Antseleve, Ndackyssa",,,,,,swx170030,
+FIN,4310,0U1,1,2,3,5,2,2,3,1,,,,,,,,,,,"He, Jianyao",,,,,,jrm160330,jennifer murray
+FIN,4380,0U1,1,6,3,2,,,,1,,,,,,,,,,,"Ballew, Gregory",,,,,,geb011100,gregory ballew
+FIN,6301,0W1,,9,6,4,7,3,7,3,,,,,3,,,,3,,"Nishi, Hirofumi","Kurucak, Abdurrahman",,,,,tday,theodore day
+FIN,6301,AW1,,7,1,1,1,,,,,,,,1,,,,,,"Minch, Lauren",,,,,,,lauren minch
+FIN,6301,CW1,,27,8,,1,,,2,,,,,1,,,,,,"Minch, Lauren",,,,,,,lauren minch
+FIN,6301,XU1,,18,2,3,,,,,,,,,,,,,,,"Reichert, Carolyn A",,,,,,carolyn,carolyn reichert
+FIN,6308,0W1,,7,,4,6,1,,,,,,,,,,,1,,"Lewin, Peter",,,,,,plewin,peter lewin
+FIN,6322,0W1,,13,6,6,14,,2,1,,,,,,,,,,,"DeCourcy, George A",,,,,,gad075000,george decourcy
+FIN,6352,5U1,,6,5,5,1,1,1,1,,,,,,,,,1,,"Davis, Richard L",,,,,,spring8,david springate
+FIN,6353,0W1,,3,3,2,2,1,1,,,,,,1,,,,1,,"Baranchuk, Nina","Hamzeh, Alireza",,,,,nxb043000,nina baranchuk
+FIN,4V80,593,,,,,,,,,,,,,,27,,,,,"Nishi, Hirofumi",,,,,,hxn210016,hirofumi nishi
+FIN,4V80,0U3,,,,,,,,,,,,,,24,,,,,"Nishi, Hirofumi",,,,,,hxn210016,hirofumi nishi
+FIN,6V98,0U1,,,,,,,,,,,,,,,,,,51,"Reichert, Carolyn A",,,,,,carolyn,carolyn reichert
+FTEC,6311,FH2,,1,2,,1,3,,,,,,,3,,,,,,"Scott, James",,,,,,jas076100,james scott
+GEOS,1303,0W1,3,18,14,4,1,,,,,,,,,,,,,,"Griffin, William R","Walker, Sara C",,,,,pujana,ignacio pujana
+GOVT,2305,0U1,2,1,1,1,,3,1,,1,,,1,1,,,,,,"Khan, Humza",,,,,,jgc130130,
+GOVT,2305,0U2,6,10,5,1,2,,3,,,,,,,,,,,,"Widner, Katie",,,,,,rjl140330,ryan lux
+GOVT,2306,0U1,,16,4,2,1,,,,,,,,1,,,,,,"Islam, Maria",,,,,,ckc150230,maria islam
+GOVT,2306,0U2,,14,5,3,9,4,1,5,5,1,,1,1,,,,,,"Eaton, John M",,,,,,cxg172030,carlos gutierrez mannix
+HDCD,6370,0H1,,12,,,,,,,,,,,,,,,,,"Tsai, En Chia A",,,,,,dme061000,donna ewing
+HDCD,6385,0W1,,11,,,,,,,,,,,,,,,,,"Hunsley, Jana",,,,,,jxh220032,jana hunsley
+HIST,1301,0W1,7,16,8,,1,1,3,,1,,,,1,,,,,,"Seidl-Staley, Ash J",,,,,,jxs072200,jeffrey schulze
+HIST,1301,0W2,2,16,1,2,5,1,,2,1,,,,2,,,,,,"Pettengill, Ryan S",,,,,,rsp120030,ryan pettengill
+HIST,1302,0W1,5,15,34,34,30,14,8,3,8,1,3,,10,,,,,,"Schulze, Jeffrey M","Akhighu, Odegua M","Tijani, Kehinde O","Li, Ang",,,sdk200001,shulamith kang
+HIST,4344,0W1,5,3,3,5,1,,,1,,,,,2,,1,,,,"Pfister, Debra H",,,,,,dhpf,debra pfister
+HIST,4378,0W1,4,16,,2,1,,,,,,,,,,,,,,"Pettengill, Ryan S",,,,,,rsp120030,ryan pettengill
+HLTH,1301,0W1,,2,2,2,3,2,,,,2,,1,3,,,,,,"Baetge, Claire",,,,,,cxb170330,claire baetge
+HLTH,3300,0U1,,,5,3,6,6,6,3,5,,1,,,,,,,,"Byrnes, Kathleen A",,,,,,kab019000,kathleen byrnes
+HLTH,4304,0U1,,20,5,2,,1,,1,,,,,,,,,,,"Byrnes, Kathleen A",,,,,,kab019000,kathleen byrnes
+HMGT,3301,0U1,2,2,2,2,5,4,1,1,,1,,,,,,,,,"Robb, Horace A",,,,,,hxr220017,horace robb
+HMGT,4090,091,,,,,,,,,,,,,,16,,1,,,"Tesmer, Kristin M",,,,,,kmj063000,kristin tesmer
+HMGT,4090,0U1,,,,,,,,,,,,,,10,,,,,"Tesmer, Kristin M",,,,,,kmj063000,kristin tesmer
+HMGT,6321,CH1,,20,,,,,,,,,,,,,,,,,"Ghosh, Anne F",,,,,,,anne ghosh
+HMGT,6325,0W1,,19,,,,,,,,,,,,,,,,,"Stephens, Timothy G",,,,,,tgs170130,timothy stephens
+HMGT,6331,5U1,,28,,,2,,,,,,,,,,,,,,"Malaise, Michael",,,,,,mhm130430,michael malaise
+HMGT,6332,5U1,,5,5,14,3,2,2,1,,,,,1,,,,,,"Ramanathan, Kannan",,,,,,kxr087000,kannan ramanathan
+HMGT,6403,AH6,,20,1,,1,,,,,,,,,,,,,,"Kaiser, Robert C","Mccracken, John F",,,,,,robert kaiser
+HMGT,6403,AS1,,34,,,,,,,,,,,,,,,,,"Mccracken, John F","Taylor, Donald E",,,,,,john mccracken
+HMGT,6410,AS1,,43,,,,,,,,,,,,,,,,,"Taylor, Donald E","Convery, Paul",,,,,det190000,donald taylor
+HMGT,4V90,0U3,,,,,,,,,,,,,,11,,,,,"Tesmer, Kristin M",,,,,,kmj063000,kristin tesmer
+IMS,3310,0U1,,5,2,2,10,1,4,4,1,,,,1,,,,,,"Henderson, Thomas C",,,,,,xxl133730,
+IMS,3310,5W1,,16,1,8,12,,2,7,,1,1,,,,,,,,"Henderson, Thomas C",,,,,,txh093000,tom henderson
+IMS,6304,AW1,,9,,,10,,,,,,,,,,,,1,,"Petrik, Peter",,,,,,,peter petrik
+IMS,6316,GW1,,4,12,5,8,3,,,,,,,,,,,,,"Peinhardt, Clint W",,,,,,cwp052000,clint peinhardt
+IMS,6354,GW1,,2,3,2,5,,,,,,,,,,,,,,"Reichmuth, Gary",,,,,,,gary reichmuth
+IMS,6360,0W1,,20,18,11,14,3,1,1,,,,,,,,,1,,"Skuza, Agnieszka","Shen, Jia",,,,,kxs014600,kurt siklar
+IMS,6365,0W1,,10,9,9,9,2,,1,,,,,,,,,,,"Woldu, Habte G","Lin, Tzu-Ying",,,,,wolduh,habte woldu
+ISIS,3335,0W1,2,3,8,2,4,2,1,,,,,,,,,,,,"Rosa, Jonathan",,,,,,jxr172530,jonathan rosa
+ISNS,2359,0W1,66,6,10,5,5,4,2,1,3,,,,2,,,,,,"Pujana, Ignacio",,,,,,pxs077000,prabin shilpakar
+ISNS,2367,0W1,25,25,7,6,2,,1,,1,,,,2,,,,,,"Pujana, Ignacio",,,,,,pujana,ignacio pujana
+ISNS,2367,0W2,10,10,2,5,5,1,,,1,,,,2,,,,,,"Pujana, Ignacio",,,,,,pujana,ignacio pujana
+ITSS,3300,5U1,,15,3,9,6,3,2,3,4,3,2,1,,,,,,,"Owens, Sean M","Nalamothu, Sudheerbabu","Owens, Dawn M",,,,jxs124931,
+ITSS,3311,5U1,,4,4,6,5,4,3,1,2,1,,2,,,,,,,"Maru, Vatsal K","Zhang, Hong",,,,,yxk130930,yeongin kim
+ITSS,3390,5U1,,2,1,,2,3,1,,,,,2,2,,,,,,"Neal, Angela","Satao, Dipak V",,,,,vxa081000,vivek arora
+ITSS,4090,091,,,,,,,,,,,,,,82,,,,,"Stephens, Timothy G",,,,,,bxk162230,timothy stephens
+ITSS,4090,0U1,,,,,,,,,,,,,,74,,,,,"Stephens, Timothy G",,,,,,tgs170130,timothy stephens
+ITSS,4300,5U1,3,5,12,6,7,4,1,1,1,,1,,1,,,,,,"Aria, Reza","Kumar, Sahejbir Singh",,,,,dmo130130,dawn owens
+ITSS,4330,5U1,,1,1,6,7,5,2,1,1,,1,1,,,,,,,"Khan, Taimur A","Liu, Yihong",,,,,nxi110630,naser islam
+ITSS,4340,0U1,,1,1,,7,4,2,3,1,,,,,,,,,,"Thompson, Luell O",,,,,,lot013000,luell thompson
+ITSS,4351,5U1,,,7,6,6,2,3,1,,,,,,,,,,,"Pandian, Thiru","Mallipeddi, Srinaga Mouneeswar",,,,,gxs150130,gaurav shekhar
+ITSS,4352,5U1,,2,8,1,3,3,1,,,,,,1,,,,,,"Neal, Angela","Satao, Dipak V",,,,,aan052000,angela neal
+ITSS,4360,5U1,2,2,3,2,1,2,2,1,1,,,,,,,,,,"Ginevich, Rostislav A",,,,,,ndt180001,nambi thirumalai
+ITSS,4370,5U1,,2,3,10,18,6,4,2,1,,2,1,,,,,,,"Young, John G",,,,,,jgy190000,john young
+ITSS,4381,5U1,,11,9,9,9,3,2,1,2,1,,,1,,,,,,"Maru, Vatsal K","Satao, Dipak V",,,,,vkm220000,vatsal maru
+ITSS,4V90,593,,,,,,,,,,,,,,21,,,,,"Stephens, Timothy G",,,,,,tgs170130,timothy stephens
+ITSS,4V90,0U3,,,,,,,,,,,,,,50,,,,,"Stephens, Timothy G",,,,,,tgs170130,timothy stephens
+LANG,3348,0S1,2,5,3,1,2,,,,,,,,,,,,,,"Hoki, Chieko",,,,,,cxh190009,chieko hoki
+LIT,1301,0W1,16,5,2,3,2,,4,,,,,,,,,,,,"Ingrao, Peter J",,,,,,jingrao,peter ingrao
+LIT,2331,0W1,3,8,4,1,,,,1,,,,,,,,,,,"Johnson, Kevin W",,,,,,axk173530,alana king
+LIT,3319,0W1,11,3,1,1,,,,,,,,,,,,,,,"Ingrao, Peter J",,,,,,mlm160630,manuel martinez
+LIT,4329,0W1,4,,2,1,1,,1,1,,,,,2,,,,,,"Walker, Jason A",,,,,,jaw140030,jason walker
+MAS,6009,0U1,,,,,,,,,,,,,,,,,,15,"Widdifield, David S","Fierst, John",,,,,dsw180001,david widdifield
+MAS,6102,051,,,,,,,,,,,,,,,,,,28,"Robb, Horace A","Cirilo, Jason M","Wang, Jiyu",,,,nxj121730,neil johnson
+MAS,6V98,0U1,,,,,,,,,,,,,,,,,,32,"Widdifield, David S","Fierst, John",,,,,dsw180001,david widdifield
+MATH,1314,0U1,,1,2,2,1,2,,,1,,,1,2,,,,1,,"Alvarado, Iris","Billah, Misha",,,,,mln018200,mylinh nguyen
+MATH,1325,0U1,3,5,1,2,6,,4,,,,1,,2,,,,,,"Patel, Jigarkumar S","Babu, Ivin",,,,,hxg190020,huizhen guo
+MATH,1325,5U1,,,3,,1,3,1,2,2,,,1,1,,,,1,,"Liu, Runzhou","Rakotovao, Minosoa Valerie Emmanuellah",,,,,cxl109120,changsong li
+MATH,1326,0U1,,,4,1,2,,2,,1,1,,3,,,,,,,"Mussa, Derege H","Nuwagira, Brighton",,,,,cxl109120,changsong li
+MATH,1326,0U2,3,4,,4,,3,,1,,,,,2,,,,,,"Duruoha, Adannah","Oyekan, Oluwadamilola A",,,,,bcm052000,brady mccary
+MATH,2413,0S1,2,1,,1,1,,,,2,,1,,2,,,,,,"Nguyen, Mylinh T","Fatema, Saba","Yang, Haopeng",,,,vish,viswanath ramakrishna
+MATH,2413,0U1,,1,,1,3,2,2,4,1,1,2,1,7,,,,,,"Aman, Kelly C","Das, Richik","Guan, Ruofei","Chen, Huiyi","Sitaula, Hari P",,mma110020,mohammad akbar
+MATH,2413,0U2,1,,,1,,1,2,2,1,,,,2,,,,,,"Nguyen, Mylinh T","Aman, Kelly C","Guan, Ruofei","Das, Richik","Chen, Huiyi","Sitaula, Hari P",ila180000,iris alvarado
+MATH,2414,0U1,1,3,2,1,4,1,3,4,3,,3,,3,,,,1,,"Ahsan, Mohammad K",,,,,,kxa143530,kelly aman
+MATH,2414,0U2,1,,2,3,3,4,1,3,3,3,2,,6,,,,2,,"Ahsan, Mohammad K",,,,,,kxa143530,kelly aman
+MATH,2415,0U1,1,1,3,1,7,1,,1,,,2,,,,,,,,"Dahal, Rabin",,,,,,rxd153030,rabin dahal
+MATH,2415,0U2,,7,2,1,2,,2,1,,,,1,,,,,,,"Dahal, Rabin",,,,,,mma110020,mohammad akbar
+MATH,2417,0U1,,1,2,2,2,3,2,1,2,1,,1,4,,,,,,"Sultana, Nasrin","Sarkar, Soham","Cao, Jianpeng",,,,mka120030,mohammad ahsan
+MATH,2418,0U1,8,1,,,,1,,1,1,2,1,,1,,,,,,"Murza, Adrian C","Smith, Jared","Mrad, Preskella","Ghanem, Ziad G","Harikumar, Rohin","Williams, Matthew A",rxd153030,rabin dahal
+MATH,2418,0U2,6,2,1,3,1,2,3,1,4,1,,,3,,,,,,"Ramakrishna, Viswanath","Ghanem, Ziad G","Mrad, Preskella","Smith, Jared","Williams, Matthew A","Harikumar, Rohin",rxd153030,rabin dahal
+MATH,2419,0U1,,3,,,,,,4,10,,,,,,,,,,"Eydelzon, Anatoly","Zhen, Zhiwei","Mitra, Arnaja","Zagvozdkin, Andrei",,,axe031000,anatoly eydelzon
+MATH,2420,0U1,2,2,1,1,1,5,1,2,3,,2,,,,,,,,"Makarenkov, Oleg","Malhotra, Sakshi","Sechkin, Georgii",,,,vish,viswanath ramakrishna
+MATH,3351,0U1,3,2,,,1,2,1,1,1,,1,,1,,,,,,"Ramakrishna, Viswanath","Murad, Mohammad Hassan",,,,,axe031000,anatoly eydelzon
+MECH,2310,051,1,3,2,1,2,1,1,,,,,1,,,,,,,"Thamban, P L Stephan",,,,,,stephan,p l stephan thamban
+MECH,2330,051,2,3,4,2,2,,,2,4,,1,,,,,,,,"Thamban, P L Stephan",,,,,,stephan,p l stephan thamban
+MECH,3105,1W1,8,4,2,2,2,3,3,1,,1,1,,1,,,,,,"Rios, Oziel",,,,,,oxr106020,oziel rios
+MECH,3305,0W1,3,4,5,7,5,2,,1,1,,1,,1,,,,,,"Rios, Oziel",,,,,,dzf091000,dani fadda
+MECH,3310,051,,7,,1,,,1,,,,,1,,,,,,,"Anderson, William C",,,,,,wca140030,william anderson
+MECH,3315,0U1,,2,6,7,1,4,1,1,,,,,,,,,,,"Leonardi, Stefano",,,,,,sxl139330,stefano leonardi
+MECH,3320,0W1,1,4,5,,8,6,5,2,4,,1,,,,,,,,"Fadda, Dani Z",,,,,,xxd161630,xianming dai
+MECH,3340,0U1,1,5,3,4,4,5,2,1,,,1,,,,,,,,"Park, Wooram",,,,,,wxp103020,wooram park
+MECH,3350,0W1,2,5,3,1,1,,,,1,1,1,,,,,,,,"Rios, Oziel",,,,,,wxp103020,wooram park
+MECH,3351,0U1,1,1,3,1,3,1,2,,,1,,,,,,,,,"Patel, Apurva R",,,,,,arp210010,apurva patel
+MECH,4340,0U1,1,2,3,1,2,,1,1,,,,,,,,,,,"Park, Wooram",,,,,,wxp103020,wooram park
+MECH,4381,0U1,,4,2,7,5,,,1,,,,,,,,,,,"Hart, Robert A","Tjahjono, Nathaniel S",,,,,rxh124630,robert hart
+MECH,4382,0U1,,6,,,8,7,6,4,,,,,,,,,,,"Summers, Joshua D","Patel, Apurva R",,,,,rxh124630,robert hart
+MECH,4V95,0W1,,4,,,6,,,14,1,,,,1,,,,,,"Summers, Joshua D",,,,,,jxz156730,jie zhang
+MECO,6303,0W1,,11,9,2,14,3,3,1,,,,,,,,,,,"Lewin, Peter",,,,,,plewin,peter lewin
+MECO,6303,AW1,,18,4,2,,,,,,,,,,,,,,,"Kiser, Stephen L",,,,,,slk012100,stephen kiser
+MIS,6009,091,,,,,,,,,,,,,,,,,,20,"Thouin, Mark F",,,,,,mxt083000,mark thouin
+MIS,6009,0U1,,,,,,,,,,,,,,,,,3,133,"Thouin, Mark F",,,,,,mxt083000,mark thouin
+MIS,6308,0W1,,18,16,9,12,1,,2,,,,,,,1,,,,"Raghunathan, Srinivasan","Yan, Zhen",,,,,sraghu,srinivasan raghunathan
+MIS,6308,5U1,,14,1,,1,,,,,,,,,,,,,,"Sivaramakrishnan, Sriram","Zhang, Hong",,,,,nxi110630,naser islam
+MIS,6313,0W1,,29,8,9,6,3,1,3,,,,,1,,,,,,"Hefley, William E","Sun, Kai",,,,,sumit,sumit sarkar
+MIS,6313,5U1,,2,6,4,4,2,,,,,,,,,,,,,"Shroff, Tejas N",,,,,,tff170130,tony fuller
+MIS,6313,GW1,,13,3,5,3,,,,,,,,,,,,,,"Wiant, Russell",,,,,,,russell wiant
+MIS,6313,GW2,,10,5,7,4,,,,,,,,,,,,1,,"Wiant, Russell",,,,,,,russell wiant
+MIS,6326,0W1,,4,4,3,1,,,,,,,,,,,,,,"Ryu, Young U","Yan, Zhen",,,,,ryoung,young ryu
+MIS,6330,5U1,,,11,2,1,3,,1,,,,,,,,,,,"Shroff, Tejas N",,,,,,nxh141030,nate howe
+MIS,6344,0W1,,3,8,,1,,,2,,,,,2,,,,,,"Mehra, Amit","Xie, Si",,,,,axm078200,amit mehra
+MIS,6346,5U1,,9,10,2,1,,,,,,,,,,,,,,"El-khodari, Gasan E","Mallipeddi, Srinaga Mouneeswar",,,,,jxp180019,jerry perez
+MIS,6349,0U1,,4,4,5,1,1,,,,,,,,,,,,,"Short, Kevin P","Zhang, Hong",,,,,kps170330,kevin short
+MIS,6363,0W1,,29,8,6,8,1,1,1,,,,,,,,,2,,"Calisir, Engin","Kumar, Sahejbir Singh",,,,,exc030100,engin calisir
+MIS,6363,0W2,,22,6,7,3,1,1,3,,,,,,,,,,,"Calisir, Engin","Kumar, Sahejbir Singh",,,,,exc030100,engin calisir
+MIS,6363,SW1,,3,6,8,1,,,,,,,,,,,,,,"Raheem, Abdul",,,,,,,abdul raheem
+MIS,6380,0U1,,9,8,6,1,4,1,,,,,,,,,,,,"Islam, Naser","Nalamothu, Sudheerbabu",,,,,nxi110630,naser islam
+MIS,6393,0U1,,14,3,1,,,,,,,,,,,,,,,"Gondhalekar, Vasant","Sun, Kai",,,,,vxg220085,vasant gondhalekar
+MIS,6V98,0U1,,,,,,,,,,,,,,,,,,61,"Thouin, Mark F",,,,,,mxt083000,mark thouin
+MKT,3300,0U2,7,2,2,4,2,1,,,,,,,,,,,,,"Roshangarzadeh, Reza",,,,,,sxa130731,semiramis amirpour
+MKT,3300,0W1,,10,14,7,7,7,1,,,,,,2,,,,,,"Pahwa, Parneet","Wang, Lingbo",,,,,pxp030100,parneet pahwa
+MKT,3330,5U1,,11,3,,,2,,1,,,,,,,,,,,"Baig, Muhammad J",,,,,,mxb120231,muhammad baig
+MKT,4090,091,,,,,,,,,,,,,,24,,,,,"Haworth, Julie B",,,,,,haworth,julie haworth
+MKT,4090,0U1,,,,,,,,,,,,,,16,,,,,"Haworth, Julie B",,,,,,haworth,julie haworth
+MKT,4330,0W1,2,9,5,10,6,4,,2,2,,1,,,,,,,,"Edsel, Alexander D",,,,,,ade012000,alexander edsel
+MKT,4334,5U1,3,4,7,3,1,,,,,,,,,,,,,,"Johnson, Quincy",,,,,,sxp158130,sandra pacyna
+MKT,4360,5U1,,5,35,6,1,,,1,,,,,,,,,,,"Albrecht, Maria",,,,,,nxf051000,neil farquharson
+MKT,6301,0W1,,14,9,7,17,8,,1,,,,,,,,,,,"Pahwa, Parneet","Wang, Lingbo",,,,,axb019100,abhijit biswas
+MKT,6301,MBP,,10,1,9,5,1,1,,,,,,,,,,,,"Rajaratnam, Daniel",,,,,,dxr143430,daniel rajaratnam
+MKT,6301,XU1,,10,6,7,,,,,,,,,,,,,,,"Reichmuth, Gary",,,,,,,gary reichmuth
+MKT,6309,0W1,,1,4,4,10,,2,,,,,,,,,,2,,"Rajaratnam, Daniel",,,,,,murthi,b p murthi
+MKT,6321,0W1,,14,2,4,7,1,1,1,,,,,,,,,1,,"Edsel, Alexander D",,,,,,ade012000,alexander edsel
+MKT,6332,0W1,,4,8,6,6,2,,1,,,,,,,,,,,"Biswas, Abhijit",,,,,,axb019100,abhijit biswas
+MKT,6336,0W1,,5,2,3,3,,,,,,,,,,,,,,"Rao, Ram C",,,,,,rrao,ram rao
+MKT,6339,0W1,,,1,5,6,1,2,,,,,,,,,,,,"Rajaratnam, Daniel",,,,,,dxr143430,daniel rajaratnam
+MKT,6352,0W1,,9,2,4,10,3,3,2,,,,,2,,,,1,,"Tirone, Guido",,,,,,gxt170001,guido tirone
+MKT,4V90,593,,,,,,,,,,,,,,18,,,,,"Haworth, Julie B",,,,,,haworth,julie haworth
+MKT,4V90,0U3,,,,,,,,,,,,,,17,,,,,"Haworth, Julie B",,,,,,haworth,julie haworth
+MKT,6V98,0U1,,,,,,,,,,,,,,,,,,31,"Edsel, Alexander D",,,,,,ade012000,alexander edsel
+MUSI,1306,0W1,7,10,2,2,3,2,2,1,1,,,,,,,,,,"Rushing, Katrina C","Zhang, Yan",,,,,ljs130230,linda salisbury
+MUSI,1306,0W2,5,9,,2,5,,2,1,,,4,,1,,,,,,"Bennett, Rodger",,,,,,ljs130230,linda salisbury
+MUSI,2317,0U1,2,5,3,1,,,,,,,,,,,,,,,"Oh, Domi",,,,,,dxo210002,domi oh
+NSC,3361,0U1,,1,2,3,1,3,1,,,,,,3,,,,,,"McWilliams, Steven P",,,,,,sxm127330,steven mcwilliams
+NSC,3361,0U2,1,1,1,,1,,2,1,2,,1,,,,,,,,"Taylor, Anna M",,,,,,amt180004,anna taylor
+NSC,3361,0U3,3,5,7,1,2,2,3,4,,,1,,6,,,,1,,"LaDow, Eva S",,,,,,esl130130,eva ladow
+NSC,4351,0W1,,42,1,,,,,,,,,,,,,,,,"Shareef, Safi Ullah","West, Reyanne M","Hu, Ya-Yu",,,,sms170009,safiullah shareef
+NSC,4352,0U1,1,3,5,2,,3,,,,,,,,,,,,,"Raboune, Siham",,,,,,rxs170431,rukhsana sultana
+NSC,4366,0U1,1,3,2,,,2,1,1,,,1,,,,,,,,"Taylor, Anna M",,,,,,amt180004,anna taylor
+OB,6249,CW1,,17,,,3,,,,,,,,,,,,,,"Norton, Larry W",,,,,,,larry norton
+OB,6253,CW1,,,,,,,,,,,,,,,,,,22,"Hicks, Robert F",,,,,,,robert hicks
+OB,6301,0W1,,23,19,3,3,2,1,,,,,,1,,,,,,"Hasenhuttl, Maria","Teschner, Ryan S",,,,,ziegler,laurie ziegler
+OB,6331,CW1,,23,3,,1,,,1,,,,,,,1,,,,"Hasenhuttl, Maria",,,,,,h1562,maria hasenhuttl
+OB,6332,0W1,,30,,2,6,,,,,,,,,,,,,,"Ziegler, Laurie L","Liu, Yilin",,,,,ziegler,laurie ziegler
+OB,6332,5U1,,15,4,2,,1,,,,,,,,,,,,,"Ritchey, Kemberly A",,,,,,kar014400,kemberly ritchey
+OB,6334,CW1,,8,6,6,3,,,,,,,,2,,,,,,"Latham, Van M",,,,,,,van latham
+OB,6344,CW1,,29,5,3,4,,,,,,,,1,,,,,,"Norton, Larry W",,,,,,,larry norton
+OB,6348,CW1,,31,,,,,,,,,,,2,,,,,,"Plaisance Bryan, Suzette T","Narro, Amber",,,,,,suzette plaisance bryan
+OB,6351,CW1,,10,5,3,1,1,,,,,,,,,,,1,,"Norton, Larry W",,,,,,,larry norton
+OB,6352,CW1,,21,,1,,,,,,,,,,,,,,,"Norton, Larry W",,,,,,,larry norton
+OB,6358,GW1,,10,,,,,,,,,,,,,,,,,"Thurgood, Keith L",,,,,,klt160130,keith thurgood
+OB,6367,GW1,,10,1,,,,,,,,,,,,,,,,"Thurgood, Keith L",,,,,,klt160130,keith thurgood
+OB,6382,CW1,,27,,,,,,,,,,,1,,,,,,"Plaisance Bryan, Suzette T","Narro, Amber",,,,,,suzette plaisance bryan
+OB,6384,CW1,,17,2,,1,,,,,,,,,,,,,,"Honeycutt, James",,,,,,,james honeycutt
+OB,6384,CW2,,22,4,1,1,,,,,,,,,,,,,,"Honeycutt, James",,,,,,,james honeycutt
+OBHR,3310,0U1,2,3,12,3,2,2,,2,1,,,,,,,,,,"Guo, Nan",,,,,,davidr,david ritchey
+OBHR,3330,5U1,5,6,11,,,1,,,1,,,,1,,,,,,"Albrecht, Dale J",,,,,,dja180003,dale albrecht
+OBHR,4300,0W1,25,15,3,2,,,,3,,,,,1,,,,,,"Edgington, Kyle D",,,,,,kde081000,kyle edgington
+OPRE,3310,0U1,1,1,,2,8,,1,6,,,1,,,,,,,,"Subramoniam, Ramesh","Zhang, Minmin",,,,,xxs130630,xi shan
+OPRE,3310,0U2,1,5,3,4,1,3,1,,,,,,1,,,,,,"Celik, Beyza",,,,,,dxp153830,david parks
+OPRE,3310,5U1,16,4,10,5,11,2,2,2,,,,,,,,,2,,"Armaghan, Milad",,,,,,yxc121130,ying cao
+OPRE,3333,0W1,1,9,3,6,6,10,3,3,2,,,,3,,,,1,,"Enayaty Ahangar, Negin","Batra, Nirmanyu",,,,,axa134231,athena alimirzaei
+OPRE,3333,0W2,3,15,3,3,6,6,1,2,1,,1,,3,,,,,,"Enayaty Ahangar, Negin","Batra, Nirmanyu",,,,,axa134231,athena alimirzaei
+OPRE,3333,5U1,10,,,1,2,1,2,3,1,1,,,3,,,,,,"Whalen, Tristan G","Joshi, Trushil",,,,,mxn121930,mohammad naseri
+OPRE,3360,0W1,17,10,5,9,9,3,1,2,1,,,,3,,,,,,"Ahadi, Khatereh","Wang, Zihan",,,,,flannery,carol flannery
+OPRE,3360,5U1,9,2,1,5,3,3,2,6,5,4,1,3,3,,,,,,"Whalen, Tristan G","Joshi, Trushil",,,,,mxn121930,mohammad naseri
+OPRE,4090,091,,,,,,,,,,,,,,10,,,,,"Brussolo, Monica E",,,,,,meb049000,monica brussolo
+OPRE,6009,0U1,,,,,,,,,,,,,,,,,1,60,"Widdifield, David S","Fierst, John",,,,,dsw180001,david widdifield
+OPRE,6301,0W1,,8,7,5,6,8,2,5,,,,,1,,,,2,,"Leach, Sonia E","Takasi, Venkanna Dora Goutham",,,,,flannery,carol flannery
+OPRE,6302,0W1,,13,7,12,6,4,,,,,,,,,,,1,,"Dawande, Milind W","Takasi, Venkanna Dora Goutham",,,,,milind,milind dawande
+OPRE,6302,MBP,,19,7,,,,,,,,,,,,1,,,,"Subramoniam, Ramesh","Zhang, Minmin",,,,,rxs179630,ramesh subramoniam
+OPRE,6332,5U1,,6,3,2,1,4,2,4,,,,,2,,,,,,"Ramanathan, Kannan",,,,,,kxr087000,kannan ramanathan
+OPRE,6379,PW1,,7,5,,,,,,,,,,,,,,,,"Rajamani, Divakar",,,,,,dxr020100,divakar rajamani
+OPRE,4V90,0U3,,,,,,,,,,,,,,11,,,,,"Brussolo, Monica E",,,,,,meb049000,monica brussolo
+OPRE,6V98,0U1,,,,,,,,,,,,,,,,,,30,"Fierst, John","Widdifield, David S",,,,,meb049000,monica brussolo
+PA,3333,0W1,2,4,3,,2,1,,,,,,,1,,,,,,"Sharma, Namrta",,,,,,tth130030,
+PA,6345,5U1,,11,,,1,,,,,,,,,,,,,,"Benavides, Abraham",,,,,,gxc097120,galia cohen
+PA,6369,0W1,,16,3,,,,,,,,,,,,,,,,"Stocks, Dhriti P",,,,,,dpp130130,
+PA,8330,HN1,,46,,,,,,,,,,,,,,,1,,"Shute, William H","Chin, Michelle L",,,,,whs170030,
+PA,8331,HN1,,30,11,2,,3,,,,,,,,,,,1,,"Chin, Michelle L","Kane, John","Aitken, Allison D","Gordon, Waverly","Portman, Stuart",,mlc140530,
+PA,8332,HN1,,,,,,,,,,,,,,,,,1,46,"Chin, Michelle L","Reinemeyer, Anneliese","Nugent, Mary",,,,mlc140530,
+PHIL,3328,0W1,,2,3,1,1,1,,1,,,,,1,,,,,,"Dennis, Patrick W",,,,,,pdennis,patrick dennis
+PHIN,1120,0U1,,12,,,,,,,,,,,1,,,,,,"Gold, Terry",,,,,,yogagold,terry gold
+PHYS,1301,0U1,3,4,6,2,3,,,2,,1,,1,,,,,,,"Khan, Amena L","Schussler, Joshua A","Lin, Manshuo",,,,jds107020,jason slinker
+PHYS,1302,0U1,,,2,2,2,,3,1,1,,,,,,,,,,"Malko, Anton","Ryan, Conor",,,,,avm074000,anton malko
+PHYS,1302,0W1,3,12,4,5,6,,1,5,,,1,,,,,,,,"Sun, Kuei","Zhai, Zixin",,,,,kxs147030,kuei sun
+PHYS,2125,1U1,2,12,,,,,,,,,,,,,,,,,"Sun, Kuei","Kajla, Rohit",,,,,kxs147030,kuei sun
+PHYS,2125,1U2,2,12,,,,,,,,,,,,,,,,,"Sun, Kuei","Nguyen, Khoa",,,,,kxs147030,kuei sun
+PHYS,2125,1U3,2,11,,,,,,,,,,,1,,,,,,"Sun, Kuei","Magadi Shivalingaiah, Meghraj","Khalid, Muhammad",,,,kxs147030,kuei sun
+PHYS,2126,1U1,10,8,1,,,,,,,,,,,,,,,,"Mac Alevey, Paul J","Fluckey, Stephen P",,,,,paulmac,paul macalevey
+PHYS,2126,1U3,2,19,,,1,,,,,,,,,,,,,,"Mac Alevey, Paul J","Ruwali, Shisir",,,,,paulmac,paul macalevey
+PHYS,2126,1U4,,21,4,,,,,,,,,,,,,,,,"Mac Alevey, Paul J","Kakani, Vivek M",,,,,paulmac,paul macalevey
+PHYS,2126,1U6,1,15,1,,,,,,,,,,,,,,,,"Mac Alevey, Paul J","Shrestha, Samyak",,,,,paulmac,paul macalevey
+PHYS,2325,0H1,1,7,1,,7,1,,2,,1,1,1,,,,,,,"Slinker, Jason D","Seifi, Melodee O","Ali, Akbar",,,,jds107020,jason slinker
+PHYS,2325,0H2,1,2,1,2,3,2,1,2,,,,,1,,,,,,"Ishak-Boushaki, Mustapha","Sooriyaarachchi, Vinu K",,,,,mxi054000,mustapha ishak boushaki
+PHYS,2326,0U1,,12,12,6,7,5,5,,,,2,,,,,,,,"Gartstein, Yuri","Aker, Adam","Bera, Avijit",,,,yxg037000,yuri gartstein
+PPOL,4312,0S2,6,10,,,,,,,,,,,,,,,,,"Boots, Denise P",,,,,,dpb062000,denise boots
+PPOL,4396,0S1,13,3,,,,,,,,,,,,,,,,,"Worrall, John L",,,,,,jlw064000,john worrall
+PPPE,8V97,056,,,,,,,,,,,,,,,,,,15,"Brunell, Thomas L",,,,,,tlb056000,thomas brunell
+PSCI,3303,0S1,2,11,3,,,,,,,,,,,,,,,,"Gray, Thomas R",,,,,,txg171430,thomas gray
+PSCI,4306,051,2,2,3,9,2,2,,,,,,,,,,,,,"Elmore, Naela",,,,,,nxm153530,
+PSCI,4332,0U1,,3,4,2,4,1,1,,,,,,,,,,,,"Noe, Ricardo",,,,,,rxn200000,ricardo noe
+PSCI,4357,0U1,9,4,6,5,2,1,1,,,,,,,,,,,,"Sanchez De La Rosa, Andres Ricardo",,,,,,axs180146,andres sanchez
+PSCI,4396,091,4,10,1,3,,1,,,,,,,,,,,1,,"Heintze, Dagmar",,,,,,dxh210027,dagmar heintze
+PSY,2301,0W1,,20,16,3,16,6,3,4,4,2,1,,6,,,,,,"Brody, Salena M","Gu, Pan",,,,,smb051000,salena brody
+PSY,2317,0W1,,16,1,5,3,4,1,1,1,1,,,2,,,,,,"Fearon, Danielle","Behboudi, Mohammad Hossein",,,,,gxs180015,gayle schwark
+PSY,3310,0U1,6,11,2,3,1,,2,2,,,,,,,,,,,"Redig, Samantha L","Gholap, Neha P",,,,,krs150330,
+PSY,3331,0W1,,36,6,3,2,5,1,1,3,,,,6,,,,,,"Brody, Salena M","Hsieh, Uan-Luen",,,,,bxp200011,bo kyung park
+PSY,3342,0W1,,39,,,6,,,1,,,,,,,,,,,"Bonner, Deborah","Redig, Samantha L","Williams, Denise D",,,,dbonner,deborah bonner
+PSY,3361,0W1,58,9,6,1,1,2,2,1,,,,,3,,1,,,,"Hooge, Kimberley D",,,,,,kls190004,kendra seaman
+PSY,3392,0U1,5,6,2,3,2,1,2,,1,1,,,2,,,,,,"Holmes, Melanie C","Sanchez, Patricia Monique",,,,,rxr076000,rachna raman
+PSY,3393,0U1,2,1,5,2,3,1,1,,1,1,,,,,,,,,"Shirvani, Forouz","Bennett-Leleux, Lauren",,,,,ach103020,amanda hahn
+PSY,3393,0W1,,11,3,9,9,1,3,1,,,,,,,,,1,,"Fearon, Danielle","Cortez, Jared I",,,,,fxk024000,forouz shirvani
+PSY,4331,0U1,4,9,7,6,10,4,6,9,2,3,4,,,,,,,,"Poucher, Jesse W","Sierra, Francisco J",,,,,jwp082000,jesse poucher
+PSY,4343,0W1,32,28,9,7,6,,4,2,2,,,1,2,,,,1,,"Ybarra, Regina K","Kulkarni, Maitreyee",,,,,rky190000,regina ybarra
+PSY,4343,0W2,24,11,7,3,2,,2,,2,,1,,3,,,,,,"Ybarra, Regina K","Carrico, Sara M",,,,,aep140430,amy pinkham
+PSY,4344,0W1,,24,13,1,9,5,1,2,2,,,2,,,,,1,,"Hunsley, Jana","Li, Yue",,,,,jxh220032,jana hunsley
+PSY,4346,0W1,25,26,13,8,4,,,2,5,1,,,,,,,,,"Wilder, Siri","Latteri, Christopher W",,,,,jgentsch,joanna gentsch
+PSY,4394,0U1,,,,,,,,,,,,,,15,,1,,,"Choate, Michael J",,,,,,mchoate,michael choate
+PSY,4395,0U1,,,,,,,,,,,,,,16,1,,,,"Choate, Michael J",,,,,,mchoate,michael choate
+REAL,6322,0W1,,5,6,1,,,,1,,,,,,,,,,,"DeCourcy, George A",,,,,,gad075000,george decourcy
+RHET,1302,051,6,1,2,2,,1,,,,1,,,2,,,,,,"Minzer, Karen",,,,,,axs084500,addison shierry
+RHET,1302,0S3,,4,1,4,1,,,,,,,,,,,,,,"Aljararwa, Rasha",,,,,,jxb120631,
+RHET,1302,0W1,,10,1,,2,1,,1,,,,,,,,,,,"Mathur, Shivika",,,,,,sxm170012,shivika mathur
+RHET,1302,0W2,,2,4,3,2,2,,,,,1,,3,,,,,,"Cox, Gavin L",,,,,,axs084500,addison shierry
+RHET,1302,0W3,1,5,4,1,1,2,1,,2,,,,,,,,,,"Walker, Jason A",,,,,,jaw140030,jason walker
+SE,4381,0U1,,3,3,8,7,8,3,3,,2,2,1,,,,,,,"Paulk, Mark C","Alsarra, Sultan M",,,,,mcp130030,mark paulk
+SE,6388,MU1,,10,,,,,,,,,,,,,,,1,,"Zhao, Yi","Alsarra, Sultan M",,,,,zhao,yi zhao
+SOC,1301,0U1,2,3,6,2,3,2,,1,1,,,,,,,,,,"Elsafadi, Hoda O",,,,,,hoe180000,
+SOC,2320,0S1,14,1,1,,,,,,,,,,,,,,,,"Lanham, Carol C",,,,,,scotch,richard scotch
+SOC,4372,0W1,22,14,5,3,2,2,1,,,,,1,1,,,,,,"Dickey, Galen L",,,,,,jjc150830,jacquelyn cheun
+SPAU,3341,0W1,,1,1,4,2,2,,1,,,,,,,,,,,"Fowler, Stephanie L",,,,,,adw052000,andrea warner czyz
+SPAU,3342,0W1,,10,,,,,,,,,,,,,,,,,"Bonner, Deborah","Redig, Samantha L","Williams, Denise D",,,,dbonner,deborah bonner
+SPAU,3343,0U1,1,4,3,,2,,,,,,,,1,,,,,,"Mehta, Sonya","Thomas, Abbey L",,,,,wkatz,william katz
+SPAU,3344,0U1,,2,2,2,4,,1,,,,,,,,,,,,"Shembel, Adrianna C","Camacho, Natalia S",,,,,hxd121330,hillary klimkowski
+STAT,2332,0U1,2,1,2,3,1,,2,,3,1,,1,1,,,,,,"Jiang, Shengjie","Kenney, John F",,,,,tgw100020,tristan whalen
+SYSM,6326,SU1,,13,3,3,,,,,,,,,,,,,,,"Koganti, Ramakrishna",,,,,,rxk190037,ramakrishna koganti
+THEA,1310,051,,3,6,1,,,,,,,,,,,,,,,"Enyaosah, Damian P",,,,,,sah140730,shelby hibbs
