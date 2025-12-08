@@ -81,6 +81,12 @@ def load_professor_dataset():
     df["tags_text"] = df["tags"].apply(lambda x: " ".join(x) if isinstance(x, list) else "")
     df["has_rmp"] = df["quality_rating"].notnull()
 
+    # normalize would_take_again to 0-1 scale
+    if "would_take_again" in df.columns:
+        df["would_take_again_norm"] = df["would_take_again"] / 100.0
+    else:
+        df["would_take_again_norm"] = np.nan
+
     return df
 
 # load the grade data, used for extra insights (aggregated values use placeholders for withdrawal for example)
@@ -93,6 +99,25 @@ def load_all_grade_data():
             grades_path = os.path.join("data", filename)
             print(f"Loading grades file {grades_path}")
             df = pd.read_csv(grades_path)
+            
+            # extract semester and year from filename for temporal analysis
+            # helps with comparing data over time and throughout events like covid
+            parts = filename.replace("enhanced_grades_", "").replace(".csv", "")
+            if len(parts) >= 3:
+                year_suffix = parts[:-1]  # e.g., "21"
+                semester_code = parts[-1]  # e.g., "f"
+                
+                year = 2000 + int(year_suffix)
+                
+                semester_map = {"f": ("fall", 3), "s": ("spring", 1), "u": ("summer", 2)}
+                semester_name, semester_num = semester_map.get(semester_code, ("unknown", 0))
+                
+                df["year"] = year
+                df["semester"] = semester_name
+                df["semester_num"] = semester_num
+                # Create a sortable semester index (year * 10 + semester_num)
+                df["semester_index"] = year * 10 + semester_num
+            
             all_grades.append(df)
 
     if not all_grades:
@@ -162,6 +187,65 @@ def engineer_grade_features(df):
     return df
 
 
+def compute_course_baselines(df):
+    """
+    Compute baseline statistics for each course (Subject + Catalog Nbr).
+    This allows us to normalize professor performance relative to course difficulty.
+    Example: CS 4349 (hard course) vs CS 1336 (easier course)
+    """
+    print("\nComputing course baselines...")
+    
+    # Group by course (Subject + Catalog Number)
+    course_groups = df.groupby(["Subject", "Catalog Nbr"])
+    
+    baseline_stats = course_groups.agg({
+        "mean_gpa": ["mean", "std", "count"],
+        "dfw_rate": ["mean", "std"],
+        "pct_A": "mean",
+        "pct_withdraw": "mean",
+        "enrollment": "sum"
+    }).reset_index()
+    
+    # Flatten multi-level columns
+    baseline_stats.columns = [
+        "Subject", "Catalog Nbr",
+        "course_avg_gpa", "course_gpa_std", "course_section_count",
+        "course_avg_dfw", "course_dfw_std",
+        "course_avg_pct_A", "course_avg_pct_withdraw",
+        "course_total_enrollment"
+    ]
+    
+    # Replace zero std with 1 to avoid division by zero
+    baseline_stats["course_gpa_std"] = baseline_stats["course_gpa_std"].replace(0, 1)
+    baseline_stats["course_dfw_std"] = baseline_stats["course_dfw_std"].replace(0, 1)
+    
+    print(f"Computed baselines for {len(baseline_stats)} unique courses")
+    return baseline_stats
+
+
+def normalize_by_course(df):
+    """
+    Add relative performance features by normalizing against course baselines.
+    This isolates the 'professor effect' from the 'course difficulty effect'.
+    """
+    baselines = compute_course_baselines(df)
+    
+    # Merge baselines back to the main dataframe
+    df = df.merge(baselines, on=["Subject", "Catalog Nbr"], how="left")
+    
+    # Compute z-scores: how many standard deviations is this professor from the course average?
+    # Positive z-score = easier than average for this course
+    # Negative z-score = harder than average for this course
+    df["gpa_zscore"] = (df["mean_gpa"] - df["course_avg_gpa"]) / df["course_gpa_std"]
+    df["dfw_zscore"] = (df["dfw_rate"] - df["course_avg_dfw"]) / df["course_dfw_std"]
+    
+    # Also compute simple differences (easier to interpret)
+    df["gpa_diff"] = df["mean_gpa"] - df["course_avg_gpa"]
+    df["dfw_diff"] = df["dfw_rate"] - df["course_avg_dfw"]
+    
+    return df
+
+
 # safely computes mode of a pandas series
 def compute_series_mode(series, default="unknown"):
     if series is None or len(series) == 0:
@@ -204,6 +288,10 @@ def aggregate_instructor_features(course_df):
         course_df["enrollment"] = course_df[GRADE_COLS].sum(axis=1).fillna(0)
 
     weighted_feats = ["mean_gpa", "pct_A", "pct_B", "pct_C", "pct_D", "pct_F", "pct_withdraw", "pct_incomplete", "pct_pass", "pct_no_credit", "dfw_rate"]
+    
+    # add normalized features if they exist
+    if "gpa_zscore" in course_df.columns:
+        weighted_feats.extend(["gpa_zscore", "dfw_zscore", "gpa_diff", "dfw_diff"])
 
     grouped = course_df.groupby("instructor_id")
     rows = []
@@ -235,6 +323,42 @@ def aggregate_instructor_features(course_df):
         # extreme grade percentages to identify large variability in grading
         row["instr_extreme_grades"] = row.get("instr_pct_A", 0) + row.get("instr_pct_F", 0)
 
+        # temporal features for teaching experience and trends over time
+        if "semester_index" in g.columns:
+            g_sorted = g.sort_values("semester_index").copy()
+            
+            row["instr_semesters_active"] = g["semester_index"].nunique()
+            row["instr_years_teaching"] = (g["year"].max() - g["year"].min()) if "year" in g.columns else 0
+            
+            # weight recent semesters more for recency
+            max_semester = g["semester_index"].max()
+            g_sorted["recency_weight"] = np.exp(-0.1 * (max_semester - g_sorted["semester_index"]))
+            
+            # last 2 years weighted average of recent performance
+            if len(g_sorted) > 1:
+                recent_gpa = np.average(g_sorted["mean_gpa"].fillna(0), weights=g_sorted["recency_weight"])
+                row["instr_recent_gpa"] = recent_gpa
+                
+                # find GPA trend from linear regression over semesters
+                if g_sorted["mean_gpa"].notna().sum() > 2:
+                    try:
+                        from scipy.stats import linregress
+                        valid_data = g_sorted[g_sorted["mean_gpa"].notna()]
+                        # only calculate trend if we have multiple semesters (not all same semester_index)
+                        if len(valid_data) > 2 and valid_data["semester_index"].nunique() > 1:
+                            slope, _, _, _, _ = linregress(valid_data["semester_index"], valid_data["mean_gpa"])
+                            row["instr_gpa_trend"] = slope
+                        else:
+                            row["instr_gpa_trend"] = 0.0
+                    except ValueError:
+                        # if regression error, skip trend calculation
+                        row["instr_gpa_trend"] = 0.0
+                else:
+                    row["instr_gpa_trend"] = 0.0
+            else:
+                row["instr_recent_gpa"] = row.get("instr_mean_gpa", 0)
+                row["instr_gpa_trend"] = 0.0
+
         rows.append(row)
 
     return pd.DataFrame(rows)
@@ -252,7 +376,10 @@ def build_feature_sets(final_df):
         "instr_sections_taught", "instr_unique_courses",
         "instr_gpa_std", "instr_gpa_cv", "instr_dfw_std",
         "instr_leniency", "instr_avg_class_size", "instr_max_class_size",
-        "instr_extreme_grades"
+        "instr_extreme_grades",
+        "instr_gpa_zscore", "instr_dfw_zscore", "instr_gpa_diff", "instr_dfw_diff",
+        "instr_semesters_active", "instr_years_teaching", 
+        "instr_recent_gpa", "instr_gpa_trend"
     ]
     numeric = [c for c in numeric if c in final_df.columns]
 
@@ -299,13 +426,7 @@ def train_model(final_df, numeric, categorical, text_col):
     Returns trained pipeline + test evaluation results.
     """
 
-    # normalize would_take_again from 0-100 to 0-1
-    if "would_take_again" in final_df.columns:
-        final_df["would_take_again_norm"] = final_df["would_take_again"] / 100.0
-    else:
-        final_df["would_take_again_norm"] = np.nan
-
-    # target columns
+    # target columns (would_take_again_norm already created in load_professor_dataset)
     targets = ["quality_rating", "difficulty_rating", "would_take_again_norm"]
     for t in targets:
         if t not in final_df.columns:
@@ -331,10 +452,7 @@ def train_model(final_df, numeric, categorical, text_col):
     print(f"After dropna on targets: {len(train_df)}")
 
     if len(train_df) == 0:
-        raise ValueError(
-            "No trainable data available. Ensure professors have both RMP ratings "
-            "and appear in the grade dataset."
-        )
+        raise ValueError("No trainable data available. Ensure professors have both RMP ratings and appear in the grade dataset.")
 
     X = train_df[numeric + categorical + [text_col]]
     y = train_df[targets]
@@ -449,6 +567,9 @@ def main():
 
     # compute course-level grade features
     merged_df = engineer_grade_features(merged_df)
+    
+    # normalize professor performance against course baselines to isolate the "professor effect" from "course difficulty effect"
+    merged_df = normalize_by_course(merged_df)
 
     # aggregate instructor features and then merge back with professor metadata
     df = aggregate_instructor_features(merged_df)
