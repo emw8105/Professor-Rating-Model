@@ -5,18 +5,19 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, cross_val_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, StackingRegressor
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.svm import SVR
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from xgboost import XGBRegressor
 
 GRADE_COLS = [
     "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", # values contributing to GPA
@@ -87,6 +88,48 @@ def load_professor_dataset():
     else:
         df["would_take_again_norm"] = np.nan
 
+    return df
+
+def engineer_tag_features(df):
+    # define tag categories based on semantic meaning
+    quality_keywords = ['caring', 'amazing', 'hilarious', 'inspirational', 
+                       'feedback', 'accessible', 'respected', 'clear']
+    
+    difficulty_keywords = ['tough', 'homework', 'test heavy', 'read', 
+                          'skip class', 'graded', 'papers', 'lots']
+    
+    engagement_keywords = ['extra credit', 'participation', 'group', 
+                          'lecture']
+    
+    def count_keywords(text, keywords):
+        if not text or not isinstance(text, str):
+            return 0
+        text_lower = text.lower()
+        return sum(1 for kw in keywords if kw in text_lower)
+    
+    df['quality_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, quality_keywords)
+    )
+    df['difficulty_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, difficulty_keywords)
+    )
+    df['engagement_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, engagement_keywords)
+    )
+    
+    # compute total tags to differentiate memorable vs forgettable professor
+    df['total_tag_count'] = (
+        df['quality_tag_count'] + 
+        df['difficulty_tag_count'] + 
+        df['engagement_tag_count']
+    )
+    
+    # more tags = more memorable/extreme professor
+    df['tag_density'] = df['tags_text'].str.split().str.len().fillna(0)
+    
+    # reliability of ratings using log scale, more ratings = more reliable
+    df['ratings_log'] = np.log1p(df['ratings_count'].fillna(0))
+    
     return df
 
 # load the grade data, used for extra insights (aggregated values use placeholders for withdrawal for example)
@@ -195,7 +238,7 @@ def compute_course_baselines(df):
     """
     print("\nComputing course baselines...")
     
-    # Group by course (Subject + Catalog Number)
+    # group by course to analyze overall course difficulty/performance
     course_groups = df.groupby(["Subject", "Catalog Nbr"])
     
     baseline_stats = course_groups.agg({
@@ -206,7 +249,6 @@ def compute_course_baselines(df):
         "enrollment": "sum"
     }).reset_index()
     
-    # Flatten multi-level columns
     baseline_stats.columns = [
         "Subject", "Catalog Nbr",
         "course_avg_gpa", "course_gpa_std", "course_section_count",
@@ -215,7 +257,6 @@ def compute_course_baselines(df):
         "course_total_enrollment"
     ]
     
-    # Replace zero std with 1 to avoid division by zero
     baseline_stats["course_gpa_std"] = baseline_stats["course_gpa_std"].replace(0, 1)
     baseline_stats["course_dfw_std"] = baseline_stats["course_dfw_std"].replace(0, 1)
     
@@ -223,23 +264,14 @@ def compute_course_baselines(df):
     return baseline_stats
 
 
+# normalize professor performance by course baselines, use z scores to see how they deviate from average course performance
 def normalize_by_course(df):
-    """
-    Add relative performance features by normalizing against course baselines.
-    This isolates the 'professor effect' from the 'course difficulty effect'.
-    """
     baselines = compute_course_baselines(df)
     
-    # Merge baselines back to the main dataframe
     df = df.merge(baselines, on=["Subject", "Catalog Nbr"], how="left")
-    
-    # Compute z-scores: how many standard deviations is this professor from the course average?
-    # Positive z-score = easier than average for this course
-    # Negative z-score = harder than average for this course
+
     df["gpa_zscore"] = (df["mean_gpa"] - df["course_avg_gpa"]) / df["course_gpa_std"]
     df["dfw_zscore"] = (df["dfw_rate"] - df["course_avg_dfw"]) / df["course_dfw_std"]
-    
-    # Also compute simple differences (easier to interpret)
     df["gpa_diff"] = df["mean_gpa"] - df["course_avg_gpa"]
     df["dfw_diff"] = df["dfw_rate"] - df["course_avg_dfw"]
     
@@ -323,6 +355,55 @@ def aggregate_instructor_features(course_df):
         # extreme grade percentages to identify large variability in grading
         row["instr_extreme_grades"] = row.get("instr_pct_A", 0) + row.get("instr_pct_F", 0)
 
+        # high DFW in small classes is more concerning than large classes
+        if row.get("instr_avg_class_size", 0) > 0:
+            row["instr_dfw_per_student"] = row.get("instr_dfw_rate", 0) / row.get("instr_avg_class_size", 1)
+        else:
+            row["instr_dfw_per_student"] = 0.0
+        
+        row["instr_consistency_score"] = 1.0 / (1.0 + row.get("instr_gpa_std", 0))
+        
+        if row.get("instr_semesters_active", 0) > 0:
+            row["instr_teaching_intensity"] = row.get("instr_sections_taught", 0) / row.get("instr_semesters_active", 1)
+        else:
+            row["instr_teaching_intensity"] = 0.0
+        
+        row["instr_grade_spread"] = row.get("instr_pct_A", 0) - row.get("instr_pct_C", 0)
+        
+        row["instr_experience_consistency"] = row.get("instr_sections_taught", 0) * row.get("instr_consistency_score", 0)
+
+        # capture diminishing returns and exponential effects w/ non-linear transformations, gpa has diminishing returns above 3.5
+        row["instr_gpa_squared"] = row.get("instr_mean_gpa", 0) ** 2
+        
+        # DFW rate is exponentially bad i.e. 20% → 40% is much worse than 0% → 20%
+        row["instr_dfw_log"] = np.log1p(row.get("instr_dfw_rate", 0))
+        row["instr_dfw_squared"] = row.get("instr_dfw_rate", 0) ** 2
+        
+        # class size has non-linear impact, i.e. 50 --> 100 less impactful than 10 --> 50
+        row["instr_class_size_log"] = np.log1p(row.get("instr_avg_class_size", 0))
+        
+        # total students/sections plateau (experience matters less after threshold)
+        row["instr_students_log"] = np.log1p(row.get("instr_total_students", 0))
+        row["instr_sections_log"] = np.log1p(row.get("instr_sections_taught", 0))
+
+        # more students = more reliable data
+        row["data_confidence"] = min(
+            np.log1p(row.get("instr_total_students", 0)) / 10,
+            1.0
+        )
+        
+        # more semesters = more reliable
+        row["temporal_stability"] = min(
+            row.get("instr_semesters_active", 0) / 10 if "semester_index" in g.columns else 0,
+            1.0
+        )
+        
+        # combined data quality score
+        row["data_quality_score"] = (
+            row.get("data_confidence", 0) * 0.6 +
+            row.get("temporal_stability", 0) * 0.4
+        )
+
         # temporal features for teaching experience and trends over time
         if "semester_index" in g.columns:
             g_sorted = g.sort_values("semester_index").copy()
@@ -379,7 +460,15 @@ def build_feature_sets(final_df):
         "instr_extreme_grades",
         "instr_gpa_zscore", "instr_dfw_zscore", "instr_gpa_diff", "instr_dfw_diff",
         "instr_semesters_active", "instr_years_teaching", 
-        "instr_recent_gpa", "instr_gpa_trend"
+        "instr_recent_gpa", "instr_gpa_trend",
+        "instr_dfw_per_student", "instr_consistency_score", "instr_teaching_intensity",
+        "instr_grade_spread", "instr_experience_consistency",
+        "instr_gpa_squared", "instr_dfw_log", "instr_dfw_squared",
+        "instr_class_size_log", "instr_students_log", "instr_sections_log",
+        "quality_tag_count", "difficulty_tag_count", 
+        "engagement_tag_count", "total_tag_count",
+        "data_confidence", "temporal_stability", "data_quality_score",
+        "tag_density", "ratings_log"
     ]
     numeric = [c for c in numeric if c in final_df.columns]
 
@@ -432,8 +521,7 @@ def train_model(final_df, numeric, categorical, text_col):
         if t not in final_df.columns:
             final_df[t] = np.nan
 
-    # define who is trainable (has RMP labels AND has grade-based features)
-    # Check if at least one numeric feature exists (indicates they appear in grades data)
+    # is trainable if has RMP labels AND grade-based features
     has_grade_features = final_df[numeric].notnull().any(axis=1) if numeric else pd.Series([False] * len(final_df))
     
     final_df["trainable"] = (
@@ -459,10 +547,11 @@ def train_model(final_df, numeric, categorical, text_col):
 
     preprocessor = build_preprocessor(numeric, categorical, text_col)
 
-    # we'll use a gradient boosting regressor for multi-output regression to capture professor rating patterns
-    # this is ideal for our use case since it can handle non-linear relationships and interactions between features effectively
-    model = MultiOutputRegressor(
-        GradientBoostingRegressor(
+    print("\nBuilding ensemble model...")
+    
+    # we'll try Gradient Boosting, Random Forest, Ridge Regression as base models in our ensemble stack
+    estimators = [
+        ('gb', GradientBoostingRegressor(
             n_estimators=300,
             max_depth=5,
             learning_rate=0.05,
@@ -470,8 +559,41 @@ def train_model(final_df, numeric, categorical, text_col):
             min_samples_leaf=10,
             subsample=0.8,
             random_state=42
-        )
+        )),
+        ('xgb', XGBRegressor(
+            n_estimators=300,
+            max_depth=5,
+            learning_rate=0.05,
+            subsample=0.8,
+            colsample_bytree=0.8,
+            reg_alpha=0.1,
+            reg_lambda=1.0,
+            random_state=42,
+            n_jobs=-1,
+            verbosity=0
+        )),
+        ('rf', RandomForestRegressor(
+            n_estimators=200,
+            max_depth=15,
+            min_samples_split=10,
+            min_samples_leaf=5,
+            random_state=42,
+            n_jobs=-1
+        )),
+        ('ridge', Ridge(alpha=10.0, random_state=42))
+    ]
+    
+    print("Using 4 base models: GradientBoosting + RandomForest + XGBoost + Ridge")
+    
+    stacking_model = StackingRegressor(
+        estimators=estimators,
+        final_estimator=Ridge(alpha=1.0),
+        cv=5,
+        n_jobs=-1
     )
+    
+    # MultiOutputRegressor for multi-target prediction
+    model = MultiOutputRegressor(stacking_model, n_jobs=-1)
 
     pipeline = Pipeline([
         ("preprocess", preprocessor),
@@ -482,7 +604,7 @@ def train_model(final_df, numeric, categorical, text_col):
         X, y, test_size=0.2, random_state=42
     )
 
-    print("\nTraining model...")
+    print("\nTraining final model on full training set...")
     pipeline.fit(X_train, y_train)
     preds = pipeline.predict(X_test)
 
@@ -517,9 +639,7 @@ def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=1
     Extract and display feature importance from the trained model.
     Helps identify which grade features actually matter.
     """
-    print("\n" + "="*60)
-    print("FEATURE IMPORTANCE ANALYSIS")
-    print("="*60)
+    print("FEATURE IMPORTANCE ANALYSIS: ")
     
     # Get feature names after preprocessing
     preprocessor = pipeline.named_steps["preprocess"]
@@ -544,7 +664,21 @@ def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=1
     targets = ["quality_rating", "difficulty_rating", "would_take_again_norm"]
     
     for idx, target in enumerate(targets):
-        estimator = model.estimators_[idx]
+        # Handle MultiOutputRegressor -> StackingRegressor -> base estimators
+        multi_output_estimator = model.estimators_[idx]
+        
+        # Check if it's a StackingRegressor
+        if hasattr(multi_output_estimator, 'estimators_'):
+            # Extract first base estimator (GradientBoosting)
+            estimator = multi_output_estimator.estimators_[0]
+        else:
+            estimator = multi_output_estimator
+        
+        # Check if estimator supports feature importance
+        if not hasattr(estimator, 'feature_importances_'):
+            print(f"\nWarning: Cannot extract feature importance for {target}")
+            continue
+            
         importances = estimator.feature_importances_
         
         feat_imp_df = pd.DataFrame({
@@ -560,6 +694,10 @@ def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=1
 
 def main():
     prof_df = load_professor_dataset()
+    
+    # tag-aligned features i.e. quality tags, difficulty tags, engagement tags
+    prof_df = engineer_tag_features(prof_df)
+    
     grades_df = load_all_grade_data()
 
     # complete record of grade dist per course per semester, RMP ratings, agg grade ratings, tags, difficulty, would take again %, etc., merge grade and professor data
