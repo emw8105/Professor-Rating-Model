@@ -161,7 +161,71 @@ def engineer_grade_features(df):
     return df
 
 
-if __name__ == "__main__":
+# safely computes mode of a pandas series
+def compute_series_mode(series, default="unknown"):
+    if series is None or len(series) == 0:
+        return default
+    
+    # convert everything to a string, some course ids aren't numeric like 6VXX ids
+    s = series.dropna().astype(str)
+    if s.empty:
+        return default
+    
+    m = s.mode()
+    return m.iloc[0] if not m.empty else default
+
+
+def compute_weighted_features(g, weighted_feats):
+    total_enr = g["enrollment"].sum()
+    row = {}
+
+    for f in weighted_feats:
+        vals = g[f].fillna(0)
+        if total_enr > 0:
+            row[f] = np.average(vals, weights=g["enrollment"])
+        else:
+            row[f] = vals.mean() if not vals.empty else 0.0
+
+    return row, total_enr
+
+def compute_instructor_categorical_stats(g):
+    return {
+        "instr_sections_taught": len(g),
+        "instr_unique_courses": g["Subject"].nunique() if "Subject" in g.columns else 0,
+        "instr_subject_mode": compute_series_mode(g["Subject"]) if "Subject" in g.columns else "unknown",
+        "instr_level_mode": compute_series_mode(g["Catalog Nbr"]) if "Catalog Nbr" in g.columns else "unknown"
+    }
+
+# what can we print here to ensure that things are working as intended?
+def aggregate_instructor_features(course_df):
+    # ensure enrollment exists
+    if "enrollment" not in course_df.columns:
+        print("Row enrollment not found, computing from grade columns")
+        course_df["enrollment"] = course_df[GRADE_COLS].sum(axis=1).fillna(0)
+
+    weighted_feats = ["mean_gpa", "pct_A", "pct_B", "pct_C", "pct_D", "pct_F", "pct_withdraw", "pct_incomplete", "pct_pass", "pct_no_credit", "dfw_rate"]
+
+    grouped = course_df.groupby("instructor_id")
+    rows = []
+
+    for instr, g in grouped:
+        row = {"instructor_id": instr}
+        # print(f"Aggregating features for instructor {instr} with {len(g)} courses")
+
+        # weighted numeric features
+        weighted_row, total_enr = compute_weighted_features(g, weighted_feats)
+        row.update({f"instr_{k}": v for k, v in weighted_row.items()})
+        row["instr_total_students"] = total_enr
+
+        # categorical / count-based stats
+        row.update(compute_instructor_categorical_stats(g))
+
+        rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+def main():
     prof_df = load_professor_dataset()
     grades_df = load_all_grade_data()
 
@@ -170,3 +234,11 @@ if __name__ == "__main__":
 
     # compute course-level grade features
     merged_df = engineer_grade_features(merged_df)
+
+    # aggregate instructor features and then merge back with professor metadata
+    df = aggregate_instructor_features(merged_df)
+    final_df = prof_df.merge(df, on="instructor_id", how="left")
+
+
+if __name__ == "__main__":
+    main()
