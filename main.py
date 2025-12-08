@@ -1,7 +1,6 @@
 from flask import json
 import numpy as np
 import os
-import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -14,6 +13,8 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.svm import SVR
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 # load the professor data
@@ -99,3 +100,37 @@ grades_df = load_all_grade_data()
 
 # complete record of grade dist per course per semester, RMP ratings, agg grade ratings, tags, difficulty, would take again %, etc.
 merged_df = grades_df.merge(prof_df, on="instructor_id", how="left")
+
+
+# feature normalization and preparation
+
+GRADE_COLS = [
+    "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", # values contributing to GPA
+    "CR", "P", "NC", "NF", "NP", "I", "W" # grade columns that don't contribute to GPA, these will be treated as separate indicators
+]
+
+# we'll map the GPA only for actual letter grades
+LETTER_GPA = {"A+": 4.0, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7, "D+": 1.3, "D": 1.0, "D-": 0.7, "F": 0.0}
+
+# special cases will be handled separately rather than converted to placeholder GPA values (i.e. NC or W = 0, P = 4.0, etc)
+SPECIAL_GRADES = {
+    "W": "withdraw",
+    "I": "incomplete",
+    "CR": "credit",
+    "P": "pass",
+    "NC": "no_credit",
+    "NF": "no_credit",
+    "NP": "no_credit"
+}
+
+# not every grade distribution has the same columns, especially covid-era ones so we need to ensure all expected grade columns exist by filling missing ones with 0s
+def check_grade_columns(df):
+    for c in GRADE_COLS:
+        if c not in df.columns:
+            print(f"Column {c} not found, adding with default 0s") # it seems there is some variability in the grade columns between semesters so i used this to detect the ones i was missing
+            df[c] = 0
+    return df
+
+grades_df = merged_df.copy()
+
+grades_df = check_grade_columns(grades_df)
