@@ -690,7 +690,433 @@ def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=1
         for i, row in feat_imp_df.iterrows():
             print(f"  {row['feature']:40s} {row['importance']:.4f}")
     
-    print("\n" + "="*60)
+    print("\n" + "-"*60)
+
+def display_example_data(final_df, n_examples=10):
+    print("EXAMPLE PROFESSOR PREDICTIONS")
+    
+    pred_df = final_df[
+        final_df["quality_rating"].notnull() & 
+        final_df["pred_quality"].notnull()
+    ].copy()
+    
+    if len(pred_df) == 0:
+        print("No professors with predictions available.")
+        return
+    
+    pred_df["quality_error"] = abs(pred_df["quality_rating"] - pred_df["pred_quality"])
+    pred_df["difficulty_error"] = abs(pred_df["difficulty_rating"] - pred_df["pred_difficulty"])
+    pred_df["wta_error"] = abs(pred_df["would_take_again_norm"] - pred_df["pred_would_take_again"])
+    
+    # pick from a variety of examples, i.e. high quality, low quality, and most accurate predictions
+    high_quality = pred_df.nlargest(3, "quality_rating")
+    low_quality = pred_df.nsmallest(3, "quality_rating")
+    accurate = pred_df.nsmallest(4, "quality_error")
+    
+    examples = pd.concat([high_quality, low_quality, accurate]).drop_duplicates(subset=["instructor_id"]).head(n_examples)
+    
+    for i, row in examples.iterrows():
+        print(f"\nInstructor ID: {row['instructor_id']}")
+        
+        # Handle NaN values safely
+        ratings_count = row.get('ratings_count', 0)
+        ratings_count = 0 if pd.isna(ratings_count) else int(ratings_count)
+        
+        sections_taught = row.get('instr_sections_taught', 0)
+        sections_taught = 0 if pd.isna(sections_taught) else int(sections_taught)
+        
+        total_students = row.get('instr_total_students', 0)
+        total_students = 0 if pd.isna(total_students) else int(total_students)
+        
+        print(f"RMP Ratings Count: {ratings_count}")
+        print(f"Sections Taught: {sections_taught}")
+        print(f"Total Students: {total_students}")
+        
+        ratings_log = row.get('ratings_log', 0)
+        ratings_log = 0 if pd.isna(ratings_log) else ratings_log
+        
+        if ratings_log > 3.9:
+            confidence = "HIGH"
+        elif ratings_log > 2.3:
+            confidence = "MEDIUM"
+        else:
+            confidence = "LOW"
+        print(f"Prediction Confidence: {confidence}")
+        
+        print(f"\nQuality Rating:")
+        print(f"Actual:    {row['quality_rating']:.2f}")
+        print(f"Predicted: {row['pred_quality']:.2f}")
+        print(f"Error:     {row['quality_error']:.2f}")
+
+        print(f"Difficulty Rating:")
+        print(f"Actual:    {row['difficulty_rating']:.2f}")
+        print(f"Predicted: {row['pred_difficulty']:.2f}")
+        print(f"Error:     {row['difficulty_error']:.2f}")
+
+        print(f"Would Take Again:")
+        print(f"Actual:    {row['would_take_again_norm']*100:.1f}%")
+        print(f"Predicted: {row['pred_would_take_again']*100:.1f}%")
+        print(f"Error:     {row['wta_error']*100:.1f}%")
+
+        # Show top tags if available
+        tags = row.get('tags_text', '')
+        if tags:
+            tag_list = tags.split()[:5]  # First 5 tags
+            print(f"Top Tags: {', '.join(tag_list)}")
+
+        print(f"Grade Stats:")
+        
+        mean_gpa = row.get('instr_mean_gpa', 0)
+        mean_gpa = 0 if pd.isna(mean_gpa) else mean_gpa
+        
+        dfw_rate = row.get('instr_dfw_rate', 0)
+        dfw_rate = 0 if pd.isna(dfw_rate) else dfw_rate
+        
+        pct_a = row.get('instr_pct_A', 0)
+        pct_a = 0 if pd.isna(pct_a) else pct_a
+        
+        print(f"Avg GPA: {mean_gpa:.2f}")
+        print(f"DFW Rate: {dfw_rate*100:.1f}%")
+        print(f"A Rate: {pct_a*100:.1f}%")
+    
+    # Summary statistics
+    print(f"\nSUMMARY STATISTICS for n={len(pred_df)} professors:")
+    print(f"Average Quality Error: {pred_df['quality_error'].mean():.3f} stars")
+    print(f"Average Difficulty Error: {pred_df['difficulty_error'].mean():.3f} stars")
+    print(f"Average WTA Error: {pred_df['wta_error'].mean()*100:.1f}%")
+
+
+def create_visualizations(final_df, eval_results, pipeline, numeric, categorical, text_col):
+    print("GENERATING VISUALIZATIONS")
+    
+    # Filter to professors with predictions
+    viz_df = final_df[
+        final_df["quality_rating"].notnull() & 
+        final_df["pred_quality"].notnull()
+    ].copy()
+    
+    if len(viz_df) == 0:
+        print("No data available for visualization.")
+        return
+    
+    # Set style
+    sns.set_style("whitegrid")
+    plt.rcParams['figure.figsize'] = (15, 10)
+    
+    fig1, axes = plt.subplots(1, 3, figsize=(18, 5))
+    fig1.suptitle('Model Performance: Actual vs Predicted Ratings', fontsize=16, fontweight='bold')
+    
+    targets = [
+        ('quality_rating', 'pred_quality', 'Quality Rating'),
+        ('difficulty_rating', 'pred_difficulty', 'Difficulty Rating'),
+        ('would_take_again_norm', 'pred_would_take_again', 'Would Take Again')
+    ]
+    
+    for idx, (actual_col, pred_col, title) in enumerate(targets):
+        ax = axes[idx]
+        
+        # Scatter plot
+        ax.scatter(viz_df[actual_col], viz_df[pred_col], alpha=0.5, s=30)
+        
+        # Perfect prediction line
+        min_val = min(viz_df[actual_col].min(), viz_df[pred_col].min())
+        max_val = max(viz_df[actual_col].max(), viz_df[pred_col].max())
+        ax.plot([min_val, max_val], [min_val, max_val], 'r--', linewidth=2, label='Perfect Prediction')
+        
+        # Labels and formatting
+        ax.set_xlabel(f'Actual {title}', fontsize=11)
+        ax.set_ylabel(f'Predicted {title}', fontsize=11)
+        ax.set_title(f'{title}\nR² = {eval_results[actual_col]["R2"]:.3f}', fontsize=12, fontweight='bold')
+        ax.legend()
+        ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig('model_performance_scatter.png', dpi=300, bbox_inches='tight')
+    print("Saved: model_performance_scatter.png")
+    plt.show()
+    
+    fig2, axes = plt.subplots(1, 3, figsize=(18, 5))
+    fig2.suptitle('Prediction Error Distribution', fontsize=16, fontweight='bold')
+    
+    viz_df['quality_error'] = viz_df['quality_rating'] - viz_df['pred_quality']
+    viz_df['difficulty_error'] = viz_df['difficulty_rating'] - viz_df['pred_difficulty']
+    viz_df['wta_error'] = viz_df['would_take_again_norm'] - viz_df['pred_would_take_again']
+    
+    errors = [
+        ('quality_error', 'Quality Rating Error', eval_results['quality_rating']['MAE']),
+        ('difficulty_error', 'Difficulty Rating Error', eval_results['difficulty_rating']['MAE']),
+        ('wta_error', 'Would Take Again Error', eval_results['would_take_again_norm']['MAE'])
+    ]
+    
+    for idx, (error_col, title, mae) in enumerate(errors):
+        ax = axes[idx]
+        
+        # Histogram
+        ax.hist(viz_df[error_col], bins=50, alpha=0.7, color='steelblue', edgecolor='black')
+        
+        # Add MAE line
+        ax.axvline(mae, color='red', linestyle='--', linewidth=2, label=f'MAE = {mae:.3f}')
+        ax.axvline(-mae, color='red', linestyle='--', linewidth=2)
+        ax.axvline(0, color='green', linestyle='-', linewidth=2, label='Perfect (0 error)')
+        
+        ax.set_xlabel('Prediction Error', fontsize=11)
+        ax.set_ylabel('Frequency', fontsize=11)
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.legend()
+        ax.grid(True, alpha=0.3, axis='y')
+    
+    plt.tight_layout()
+    plt.savefig('prediction_error_distribution.png', dpi=300, bbox_inches='tight')
+    print("Saved: prediction_error_distribution.png")
+    plt.show()
+    
+    fig3, axes = plt.subplots(1, 3, figsize=(18, 6))
+    fig3.suptitle('Top 10 Most Important Features by Target', fontsize=16, fontweight='bold')
+    
+    # Extract ACTUAL feature importance from the trained pipeline
+    preprocessor = pipeline.named_steps["preprocess"]
+    feature_names = []
+    
+    # Build complete feature name list
+    feature_names.extend(numeric)
+    
+    if categorical:
+        cat_encoder = preprocessor.named_transformers_["cat"].named_steps["onehot"]
+        cat_features = cat_encoder.get_feature_names_out(categorical)
+        feature_names.extend(cat_features)
+    
+    if text_col:
+        tfidf = preprocessor.named_transformers_["txt"].named_steps["tfidf"]
+        tfidf_features = [f"tag_{word}" for word in tfidf.get_feature_names_out()]
+        feature_names.extend(tfidf_features)
+    
+    model = pipeline.named_steps["model"]
+    targets = ["quality_rating", "difficulty_rating", "would_take_again_norm"]
+    target_display_names = ['Quality Rating', 'Difficulty Rating', 'Would Take Again']
+    
+    for idx, (target, display_name) in enumerate(zip(targets, target_display_names)):
+        ax = axes[idx]
+        
+        # Extract feature importance from the pipeline
+        multi_output_estimator = model.estimators_[idx]
+        
+        if hasattr(multi_output_estimator, 'estimators_'):
+            # StackingRegressor - use first base estimator (GradientBoosting)
+            estimator = multi_output_estimator.estimators_[0]
+        else:
+            estimator = multi_output_estimator
+        
+        if not hasattr(estimator, 'feature_importances_'):
+            ax.text(0.5, 0.5, 'Feature importance\nnot available', 
+                   ha='center', va='center', fontsize=12)
+            ax.set_title(display_name, fontsize=12, fontweight='bold')
+            continue
+        
+        importances = estimator.feature_importances_
+        
+        # Create DataFrame and get top 10
+        feat_imp_df = pd.DataFrame({
+            "feature": feature_names,
+            "importance": importances
+        }).sort_values("importance", ascending=False).head(10)
+        
+        features = feat_imp_df['feature'].values
+        importance_values = feat_imp_df['importance'].values
+        
+        # Horizontal bar chart
+        y_pos = np.arange(len(features))
+        ax.barh(y_pos, importance_values, color='steelblue', edgecolor='black')
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(features, fontsize=9)
+        ax.invert_yaxis()
+        ax.set_xlabel('Importance', fontsize=11)
+        ax.set_title(display_name, fontsize=12, fontweight='bold')
+        ax.grid(True, alpha=0.3, axis='x')
+        
+        # Add value labels
+        for i, v in enumerate(importance_values):
+            ax.text(v + 0.01, i, f'{v:.3f}', va='center', fontsize=8)
+    
+    plt.tight_layout()
+    plt.savefig('feature_importance.png', dpi=300, bbox_inches='tight')
+    print("Saved: feature_importance.png")
+    plt.show()
+    
+    fig4, axes = plt.subplots(1, 2, figsize=(14, 6))
+    fig4.suptitle('Quality vs Difficulty Relationship', fontsize=16, fontweight='bold')
+    
+    ax1 = axes[0]
+    scatter1 = ax1.scatter(
+        viz_df['quality_rating'], 
+        viz_df['difficulty_rating'],
+        c=viz_df['would_take_again_norm'],
+        cmap='RdYlGn',
+        alpha=0.6,
+        s=50
+    )
+    ax1.set_xlabel('Quality Rating', fontsize=12)
+    ax1.set_ylabel('Difficulty Rating', fontsize=12)
+    ax1.set_title('Actual Ratings\n(Color = Would Take Again %)', fontsize=12, fontweight='bold')
+    cbar1 = plt.colorbar(scatter1, ax=ax1)
+    cbar1.set_label('Would Take Again', fontsize=10)
+    ax1.grid(True, alpha=0.3)
+    
+    # Add quadrant lines
+    ax1.axhline(3.0, color='gray', linestyle='--', alpha=0.5)
+    ax1.axvline(3.0, color='gray', linestyle='--', alpha=0.5)
+    
+    # Add quadrant labels
+    ax1.text(4.5, 4.5, 'Rigorous\n& Excellent', ha='center', va='center', 
+             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.5), fontsize=9)
+    ax1.text(1.5, 4.5, 'Tough\n& Poor', ha='center', va='center',
+             bbox=dict(boxstyle='round', facecolor='lightcoral', alpha=0.5), fontsize=9)
+    ax1.text(4.5, 1.5, 'Easy\n& Excellent', ha='center', va='center',
+             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.5), fontsize=9)
+    ax1.text(1.5, 1.5, 'Easy\n& Poor', ha='center', va='center',
+             bbox=dict(boxstyle='round', facecolor='lightgray', alpha=0.5), fontsize=9)
+    
+    # Heatmap: 2D histogram
+    ax2 = axes[1]
+    hist2d = ax2.hist2d(
+        viz_df['quality_rating'], 
+        viz_df['difficulty_rating'],
+        bins=20,
+        cmap='YlOrRd'
+    )
+    ax2.set_xlabel('Quality Rating', fontsize=12)
+    ax2.set_ylabel('Difficulty Rating', fontsize=12)
+    ax2.set_title('Professor Distribution Heatmap', fontsize=12, fontweight='bold')
+    cbar2 = plt.colorbar(hist2d[3], ax=ax2)
+    cbar2.set_label('Number of Professors', fontsize=10)
+    
+    plt.tight_layout()
+    plt.savefig('quality_vs_difficulty.png', dpi=300, bbox_inches='tight')
+    print("Saved: quality_vs_difficulty.png")
+    plt.show()
+    
+    fig5, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig5.suptitle('Impact of RMP Ratings Count on Prediction Accuracy', fontsize=16, fontweight='bold')
+    
+    # Create bins for ratings count
+    viz_df['ratings_bin'] = pd.cut(
+        viz_df['ratings_count'], 
+        bins=[0, 10, 50, 100, 500],
+        labels=['<10', '10-50', '50-100', '100+']
+    )
+    
+    # Box plot: Quality error by ratings count
+    ax1 = axes[0, 0]
+    viz_df['quality_abs_error'] = abs(viz_df['quality_error'])
+    viz_df.boxplot(column='quality_abs_error', by='ratings_bin', ax=ax1)
+    ax1.set_xlabel('Ratings Count', fontsize=11)
+    ax1.set_ylabel('Absolute Error', fontsize=11)
+    ax1.set_title('Quality Prediction Error by Ratings Count', fontsize=11, fontweight='bold')
+    plt.sca(ax1)
+    plt.xticks(rotation=0)
+    
+    # Scatter: Ratings count vs error
+    ax2 = axes[0, 1]
+    ax2.scatter(viz_df['ratings_count'], viz_df['quality_abs_error'], alpha=0.4, s=20)
+    ax2.set_xlabel('Ratings Count', fontsize=11)
+    ax2.set_ylabel('Quality Absolute Error', fontsize=11)
+    ax2.set_title('Error Decreases with More Ratings', fontsize=11, fontweight='bold')
+    ax2.set_xscale('log')
+    ax2.grid(True, alpha=0.3)
+    
+    # Bar plot: Average R² by ratings bin (simulated)
+    ax3 = axes[1, 0]
+    r2_by_bin = viz_df.groupby('ratings_bin').apply(
+        lambda x: 1 - (x['quality_abs_error']**2).sum() / ((x['quality_rating'] - x['quality_rating'].mean())**2).sum()
+    )
+    r2_by_bin.plot(kind='bar', ax=ax3, color='steelblue', edgecolor='black')
+    ax3.set_xlabel('Ratings Count', fontsize=11)
+    ax3.set_ylabel('Effective R²', fontsize=11)
+    ax3.set_title('Model Performance by Ratings Count', fontsize=11, fontweight='bold')
+    ax3.axhline(0.6, color='red', linestyle='--', label='Target R²=0.60')
+    ax3.legend()
+    plt.sca(ax3)
+    plt.xticks(rotation=0)
+    ax3.grid(True, alpha=0.3, axis='y')
+    
+    # Count distribution
+    ax4 = axes[1, 1]
+    viz_df['ratings_bin'].value_counts().sort_index().plot(kind='bar', ax=ax4, color='coral', edgecolor='black')
+    ax4.set_xlabel('Ratings Count', fontsize=11)
+    ax4.set_ylabel('Number of Professors', fontsize=11)
+    ax4.set_title('Distribution of Professors by Ratings Count', fontsize=11, fontweight='bold')
+    plt.sca(ax4)
+    plt.xticks(rotation=0)
+    ax4.grid(True, alpha=0.3, axis='y')
+    
+    plt.tight_layout()
+    plt.savefig('ratings_count_impact.png', dpi=300, bbox_inches='tight')
+    print("Saved: ratings_count_impact.png")
+    plt.show()
+    
+    fig6, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig6.suptitle('Tag Alignment Analysis', fontsize=16, fontweight='bold')
+    
+    # Quality tag count vs quality rating
+    ax1 = axes[0, 0]
+    ax1.scatter(viz_df['quality_tag_count'], viz_df['quality_rating'], alpha=0.5, s=30, color='green')
+    ax1.set_xlabel('Quality Tag Count', fontsize=11)
+    ax1.set_ylabel('Quality Rating', fontsize=11)
+    ax1.set_title('Quality Tags Predict Quality', fontsize=11, fontweight='bold')
+    ax1.grid(True, alpha=0.3)
+    
+    # Add trend line
+    z = np.polyfit(viz_df['quality_tag_count'].fillna(0), viz_df['quality_rating'], 1)
+    p = np.poly1d(z)
+    ax1.plot(viz_df['quality_tag_count'].sort_values(), p(viz_df['quality_tag_count'].sort_values()), 
+             "r--", linewidth=2, label=f'Trend: y={z[0]:.2f}x+{z[1]:.2f}')
+    ax1.legend()
+    
+    # Difficulty tag count vs difficulty rating
+    ax2 = axes[0, 1]
+    ax2.scatter(viz_df['difficulty_tag_count'], viz_df['difficulty_rating'], alpha=0.5, s=30, color='orange')
+    ax2.set_xlabel('Difficulty Tag Count', fontsize=11)
+    ax2.set_ylabel('Difficulty Rating', fontsize=11)
+    ax2.set_title('Difficulty Tags Predict Difficulty', fontsize=11, fontweight='bold')
+    ax2.grid(True, alpha=0.3)
+    
+    z2 = np.polyfit(viz_df['difficulty_tag_count'].fillna(0), viz_df['difficulty_rating'], 1)
+    p2 = np.poly1d(z2)
+    ax2.plot(viz_df['difficulty_tag_count'].sort_values(), p2(viz_df['difficulty_tag_count'].sort_values()), 
+             "r--", linewidth=2, label=f'Trend: y={z2[0]:.2f}x+{z2[1]:.2f}')
+    ax2.legend()
+    
+    # Quality tag count vs would take again
+    ax3 = axes[1, 0]
+    ax3.scatter(viz_df['quality_tag_count'], viz_df['would_take_again_norm'], alpha=0.5, s=30, color='blue')
+    ax3.set_xlabel('Quality Tag Count', fontsize=11)
+    ax3.set_ylabel('Would Take Again', fontsize=11)
+    ax3.set_title('Quality Tags Strongly Predict Re-enrollment', fontsize=11, fontweight='bold')
+    ax3.grid(True, alpha=0.3)
+    
+    z3 = np.polyfit(viz_df['quality_tag_count'].fillna(0), viz_df['would_take_again_norm'], 1)
+    p3 = np.poly1d(z3)
+    ax3.plot(viz_df['quality_tag_count'].sort_values(), p3(viz_df['quality_tag_count'].sort_values()), 
+             "r--", linewidth=2, label=f'Trend: y={z3[0]:.2f}x+{z3[1]:.2f}')
+    ax3.legend()
+    
+    # Tag density histogram
+    ax4 = axes[1, 1]
+    ax4.hist(viz_df['tag_density'], bins=30, color='purple', alpha=0.7, edgecolor='black')
+    ax4.set_xlabel('Tag Density (word count)', fontsize=11)
+    ax4.set_ylabel('Number of Professors', fontsize=11)
+    ax4.set_title('Tag Density Distribution', fontsize=11, fontweight='bold')
+    ax4.axvline(viz_df['tag_density'].median(), color='red', linestyle='--', 
+                linewidth=2, label=f'Median = {viz_df["tag_density"].median():.1f}')
+    ax4.legend()
+    ax4.grid(True, alpha=0.3, axis='y')
+    
+    plt.tight_layout()
+    plt.savefig('tag_analysis.png', dpi=300, bbox_inches='tight')
+    print("Saved: tag_analysis.png")
+    plt.show()
+    
+    print("\nAll visualizations complete")
+
 
 def main():
     prof_df = load_professor_dataset()
@@ -731,6 +1157,10 @@ def main():
     print("\nSaved results_dataframe.csv")
     joblib.dump(pipeline, "model_pipeline.pkl")
     print("Saved model_pipeline.pkl")
+    
+    # pick out some notable examples to demonstrate model performance and create graphics for detailed reporting
+    display_example_data(final_df, n_examples=10)
+    create_visualizations(final_df, eval_results, pipeline, numeric, categorical, text_col)
 
 
 if __name__ == "__main__":
