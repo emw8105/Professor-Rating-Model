@@ -90,48 +90,6 @@ def load_professor_dataset():
 
     return df
 
-def engineer_tag_features(df):
-    # define tag categories based on semantic meaning
-    quality_keywords = ['caring', 'amazing', 'hilarious', 'inspirational', 
-                       'feedback', 'accessible', 'respected', 'clear']
-    
-    difficulty_keywords = ['tough', 'homework', 'test heavy', 'read', 
-                          'skip class', 'graded', 'papers', 'lots']
-    
-    engagement_keywords = ['extra credit', 'participation', 'group', 
-                          'lecture']
-    
-    def count_keywords(text, keywords):
-        if not text or not isinstance(text, str):
-            return 0
-        text_lower = text.lower()
-        return sum(1 for kw in keywords if kw in text_lower)
-    
-    df['quality_tag_count'] = df['tags_text'].apply(
-        lambda x: count_keywords(x, quality_keywords)
-    )
-    df['difficulty_tag_count'] = df['tags_text'].apply(
-        lambda x: count_keywords(x, difficulty_keywords)
-    )
-    df['engagement_tag_count'] = df['tags_text'].apply(
-        lambda x: count_keywords(x, engagement_keywords)
-    )
-    
-    # compute total tags to differentiate memorable vs forgettable professor
-    df['total_tag_count'] = (
-        df['quality_tag_count'] + 
-        df['difficulty_tag_count'] + 
-        df['engagement_tag_count']
-    )
-    
-    # more tags = more memorable/extreme professor
-    df['tag_density'] = df['tags_text'].str.split().str.len().fillna(0)
-    
-    # reliability of ratings using log scale, more ratings = more reliable
-    df['ratings_log'] = np.log1p(df['ratings_count'].fillna(0))
-    
-    return df
-
 # load the grade data, used for extra insights (aggregated values use placeholders for withdrawal for example)
 def load_all_grade_data():
     all_grades = []
@@ -183,6 +141,48 @@ def load_all_grade_data():
 
     return grades_df
 
+def engineer_tag_features(df):
+    # define tag categories based on semantic meaning
+    quality_keywords = ['caring', 'amazing', 'hilarious', 'inspirational', 
+                       'feedback', 'accessible', 'respected', 'clear']
+    
+    difficulty_keywords = ['tough', 'homework', 'test heavy', 'read', 
+                          'skip class', 'graded', 'papers', 'lots']
+    
+    engagement_keywords = ['extra credit', 'participation', 'group', 
+                          'lecture']
+    
+    def count_keywords(text, keywords):
+        if not text or not isinstance(text, str):
+            return 0
+        text_lower = text.lower()
+        return sum(1 for kw in keywords if kw in text_lower)
+    
+    df['quality_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, quality_keywords)
+    )
+    df['difficulty_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, difficulty_keywords)
+    )
+    df['engagement_tag_count'] = df['tags_text'].apply(
+        lambda x: count_keywords(x, engagement_keywords)
+    )
+    
+    # compute total tags to differentiate memorable vs forgettable professor
+    df['total_tag_count'] = (
+        df['quality_tag_count'] + 
+        df['difficulty_tag_count'] + 
+        df['engagement_tag_count']
+    )
+    
+    # more tags = more memorable/extreme professor
+    df['tag_density'] = df['tags_text'].str.split().str.len().fillna(0)
+    
+    # reliability of ratings using log scale, more ratings = more reliable
+    df['ratings_log'] = np.log1p(df['ratings_count'].fillna(0))
+    
+    return df
+
 # not every grade distribution has the same columns, especially covid-era ones so we need to ensure all expected grade columns exist by filling missing ones with 0s
 def check_grade_columns(df):
     for c in GRADE_COLS:
@@ -229,13 +229,8 @@ def engineer_grade_features(df):
 
     return df
 
-
+# compute baseline stats for each course (dpmt + catalog nbr) to normalize professor performance against course difficulty
 def compute_course_baselines(df):
-    """
-    Compute baseline statistics for each course (Subject + Catalog Nbr).
-    This allows us to normalize professor performance relative to course difficulty.
-    Example: CS 4349 (hard course) vs CS 1336 (easier course)
-    """
     print("\nComputing course baselines...")
     
     # group by course to analyze overall course difficulty/performance
@@ -277,6 +272,18 @@ def normalize_by_course(df):
     
     return df
 
+def compute_weighted_features(g, weighted_feats):
+    total_enr = g["enrollment"].sum()
+    row = {}
+
+    for f in weighted_feats:
+        vals = g[f].fillna(0)
+        if total_enr > 0:
+            row[f] = np.average(vals, weights=g["enrollment"])
+        else:
+            row[f] = vals.mean() if not vals.empty else 0.0
+
+    return row, total_enr
 
 # safely computes mode of a pandas series
 def compute_series_mode(series, default="unknown"):
@@ -290,20 +297,6 @@ def compute_series_mode(series, default="unknown"):
     
     m = s.mode()
     return m.iloc[0] if not m.empty else default
-
-
-def compute_weighted_features(g, weighted_feats):
-    total_enr = g["enrollment"].sum()
-    row = {}
-
-    for f in weighted_feats:
-        vals = g[f].fillna(0)
-        if total_enr > 0:
-            row[f] = np.average(vals, weights=g["enrollment"])
-        else:
-            row[f] = vals.mean() if not vals.empty else 0.0
-
-    return row, total_enr
 
 def compute_instructor_categorical_stats(g):
     return {
@@ -445,10 +438,6 @@ def aggregate_instructor_features(course_df):
     return pd.DataFrame(rows)
 
 def build_feature_sets(final_df):
-    """
-    Identifies numeric, categorical, and text features to use for modeling.
-    Ensures the columns exist.
-    """
     numeric = [
         "instr_mean_gpa", "instr_pct_A", "instr_pct_B", "instr_pct_C",
         "instr_pct_D", "instr_pct_F", "instr_pct_withdraw",
@@ -483,9 +472,6 @@ def build_feature_sets(final_df):
 
 
 def build_preprocessor(numeric, categorical, text_col):
-    """
-    Returns the ColumnTransformer used by the model pipeline.
-    """
     numeric_transformer = Pipeline([
         ("imputer", SimpleImputer(strategy="constant", fill_value=0)),
         ("scale", MinMaxScaler())
@@ -510,11 +496,6 @@ def build_preprocessor(numeric, categorical, text_col):
 
 
 def train_model(final_df, numeric, categorical, text_col):
-    """
-    Filters trainable rows and trains a multi-output regression model.
-    Returns trained pipeline + test evaluation results.
-    """
-
     # target columns (would_take_again_norm already created in load_professor_dataset)
     targets = ["quality_rating", "difficulty_rating", "would_take_again_norm"]
     for t in targets:
@@ -621,9 +602,6 @@ def train_model(final_df, numeric, categorical, text_col):
 
 
 def generate_predictions(final_df, pipeline, numeric, categorical, text_col):
-    """
-    Produces predictions for all instructors using the trained model.
-    """
     X_all = final_df[numeric + categorical + [text_col]].fillna(0)
     preds = pipeline.predict(X_all)
 
@@ -635,10 +613,6 @@ def generate_predictions(final_df, pipeline, numeric, categorical, text_col):
 
 
 def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=15):
-    """
-    Extract and display feature importance from the trained model.
-    Helps identify which grade features actually matter.
-    """
     print("FEATURE IMPORTANCE ANALYSIS: ")
     
     # Get feature names after preprocessing
@@ -689,8 +663,6 @@ def analyze_feature_importance(pipeline, numeric, categorical, text_col, top_n=1
         print(f"\n--- Top {top_n} Features for {target} ---")
         for i, row in feat_imp_df.iterrows():
             print(f"  {row['feature']:40s} {row['importance']:.4f}")
-    
-    print("\n" + "-"*60)
 
 def display_example_data(final_df, n_examples=10):
     print("EXAMPLE PROFESSOR PREDICTIONS")
@@ -1120,11 +1092,10 @@ def create_visualizations(final_df, eval_results, pipeline, numeric, categorical
 
 def main():
     prof_df = load_professor_dataset()
+    grades_df = load_all_grade_data()
     
     # tag-aligned features i.e. quality tags, difficulty tags, engagement tags
     prof_df = engineer_tag_features(prof_df)
-    
-    grades_df = load_all_grade_data()
 
     # complete record of grade dist per course per semester, RMP ratings, agg grade ratings, tags, difficulty, would take again %, etc., merge grade and professor data
     merged_df = grades_df.merge(prof_df, on="instructor_id", how="left")
